@@ -33,10 +33,13 @@ export const tabContainers = [
     buttonText: 'Add Selected Files',
     saveButtonDefaultStyle: {
       color: '#fff',
-      backgroundColor: '#09A175',
+      backgroundColor: '#4D8FB2',
       opacity: '1',
       border: '0px',
       cursor: 'pointer',
+      width: '188px',
+      height: '36px',
+      borderRadius: '30px',
     },
     ActiveSaveButtonDefaultStyle: {
       cursor: 'pointer',
@@ -48,6 +51,7 @@ export const tabContainers = [
       cursor: 'auto',
     },
     columns: [
+      // Case ID, Clinical Trial, Study, Center, Arm, Age of Enrollment, Sex
       {
         dataField: 'subject_id',
         header: 'Case ID',
@@ -58,14 +62,20 @@ export const tabContainers = [
       },
       {
         dataField: 'program',
-        header: 'Program Code',
+        header: 'Clinical Trial',
         sort: 'asc',
         link: '/program/{program_id}',
         display: true,
       },
       {
         dataField: 'program_id',
-        header: 'Program ID',
+        header: 'Study',
+        sort: 'asc',
+        display: true,
+      },
+      {
+        dataField: 'diagnosis',
+        header: 'Center',
         sort: 'asc',
         display: true,
       },
@@ -77,44 +87,14 @@ export const tabContainers = [
         display: true,
       },
       {
-        dataField: 'diagnosis',
-        header: 'Diagnosis',
-        sort: 'asc',
-        display: true,
-      },
-      {
-        dataField: 'recurrence_score',
-        header: 'Recurrence Score',
-        sort: 'asc',
-        display: true,
-      },
-      {
-        dataField: 'tumor_size',
-        header: 'Tumor Size (cm)',
+        dataField: 'age_at_index',
+        header: 'Age of Enrollment',
         sort: 'asc',
         display: true,
       },
       {
         dataField: 'er_status',
-        header: 'ER Status',
-        sort: 'asc',
-        display: true,
-      },
-      {
-        dataField: 'pr_status',
-        header: 'PR Status',
-        sort: 'asc',
-        display: true,
-      },
-      {
-        dataField: 'age_at_index',
-        header: 'Age (years)',
-        sort: 'asc',
-        display: true,
-      },
-      {
-        dataField: 'survival_time',
-        header: 'Survival (days)',
+        header: 'Sex',
         sort: 'asc',
         display: true,
       },
@@ -395,21 +375,9 @@ export const tabContainers = [
 export const tabs = [
   {
     id: 'case_tab',
-    title: 'Cases',
+    title: 'CASES',
     dataField: 'dataCase',
     count: 'numberOfSubjects',
-  },
-  {
-    id: 'sample_tab',
-    title: 'Samples',
-    dataField: 'dataSample',
-    count: 'numberOfSamples',
-  },
-  {
-    id: 'file_tab',
-    title: 'Files',
-    dataField: 'dataFile',
-    count: 'numberOfFiles',
   },
 ];
 
@@ -417,9 +385,9 @@ export const tabs = [
 export const tabIndex = [
   {
     title: 'Cases',
-    primaryColor: '#D6F2EA',
+    primaryColor: '#F4EEE5',
     secondaryColor: '#FFDFB8',
-    selectedColor: '#10A075',
+    selectedColor: '#4D8FB2',
   },
   {
     title: 'Samples',

@@ -107,6 +107,23 @@ const initialState = {
 const getState = () => store.getState()[storeKey];
 
 const SUNBURST_COLORS_LEVEL_1 = [
+  '#7EAEB4',
+  '#B39C7C',
+  '#C01E2E',
+  '#6ECDD3',
+  '#DF9C3E',
+];
+
+const SUNBURST_COLORS_LEVEL_2 = [
+  '#DF9C3E',
+  '#6ECDD3',
+  '##F2E297',
+  '#C01E2E',
+  '#B39C7C',
+  '#7EAEB4',
+];
+/*
+const SUNBURST_COLORS_LEVEL_1 = [
   '#7dc242',
   '#274fa5',
   '#79287c',
@@ -122,7 +139,7 @@ const SUNBURST_COLORS_LEVEL_2 = [
   '#057ebd',
   '#7dc242',
 ];
-
+*/
 function shouldFetchDataForDashboardTabDataTable(state) {
   return !(state.isFetched);
 }
