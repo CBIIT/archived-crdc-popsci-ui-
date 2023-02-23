@@ -25,10 +25,7 @@ import {
 
 function TabContainer({ children, dir }) {
   return (
-    <Typography 
-      component="div" dir={dir} 
-      style={{ padding: '5px,5px,5px,5px', marginLeft: '25px', marginRight: '20px'}}
-    >
+    <Typography component="div" dir={dir} style={{ padding: '5px,5px,5px,5px' }}>
       {children}
     </Typography>
   );
@@ -94,7 +91,7 @@ const tabController = (classes) => {
   }
 
   function getBorderStyle() {
-    const style = '3px solid #8A7F7C';
+    const style = '3px solid #42779a';
     return `${style}`;
   }
 

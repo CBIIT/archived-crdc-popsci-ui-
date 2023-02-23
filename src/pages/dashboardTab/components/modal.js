@@ -10,20 +10,17 @@ import { addToCart, cartWillFull, getFilesIdsInCart } from '../../fileCentricCar
 
 const styles = () => ({
   button: {
-    borderRadius: '30px',
-    width: '197px',
-    height: '36px',
-    lineHeight: '30px',
+    borderRadius: '10px',
+    width: '120px',
+    lineHeight: '37px',
     fontSize: '12px',
     textTransform: 'uppercase',
-    fontFamily: 'Raleway',
+    fontFamily: 'Lato',
     color: '#fff',
-    backgroundColor: '#6E888B',
+    backgroundColor: '#142D64',
     marginTop: '6px',
     marginBottom: '10px',
     marginRight: '24px',
-    border: 'none',
-    fontWeight: 700,
   },
 });
 
@@ -66,7 +63,7 @@ const SelectAllModalDialog = ({
   return (
     <>
       <button type="button" onClick={handleClickOpen} className={classes.button}>
-        Add All Filtered Files
+        Add All Files
       </button>
       <Dialog
         ref={childRef}

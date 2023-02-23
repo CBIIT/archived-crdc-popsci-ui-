@@ -31,11 +31,10 @@ export default ({
 
   const MuiTabs = {
     root: {
-      marginTop: '6px',
-      marginLeft: '25px',
+      marginTop: '15px',
     },
     flexContainer: {
-      borderBottom: '2px solid #71767A',
+      borderBottom: '10px solid #40789C',
       overflow: 'visible !important',
     },
   };
@@ -53,7 +52,7 @@ export default ({
       lineHeight: '18px',
       paddingLeft: '5px',
       letterSpacing: '0.25px',
-      borderTop: '6px solid #8A7F7C',
+      borderTop: '1px solid black',
       borderLeft: '1px solid black',
       borderRight: '1px solid black',
       '&$selected': {

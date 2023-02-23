@@ -10,7 +10,7 @@ const tabLabel = ({
       {' '}
 
     </span>
-    <span style={{ color: primaryColor, fontWeight: 300, fontSize: '16px', }}>
+    <span style={{ fontSize: '17px', color: primaryColor }}>
       (
       {count}
       )
@@ -21,9 +21,9 @@ const tabLabel = ({
 
 const styles = () => ({
   defaultStyle: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Lato',
     textTransform: 'capitalize',
-    fontSize: '18.5px',
+    fontSize: '21px',
   },
 });
 
