@@ -191,6 +191,58 @@ export const displayActiveFiltersQuery = true;
 export const widgetsData = [
   {
     type: 'sunburst',
+    label: 'Study',
+    dataName: 'armsByPrograms',
+    datatable_level1_field: 'program',
+    datatable_level2_field: 'arm',
+    titleText: 'Cases',
+    show: true,
+  },
+  {
+    type: 'donut',
+    label: 'Enrollment Year',
+    dataName: 'subjectCountByDiagnoses',
+    datatable_field: 'diagnosis',
+    titleText: 'Cases',
+    show: true,
+  },
+  {
+    type: 'donut',
+    label: 'Age-Range at Enrollment',
+    dataName: 'subjectCountByRecurrenceScore',
+    datatable_field: 'recurrence_score',
+    titleText: 'Cases',
+    show: true,
+  },
+  {
+    type: 'donut',
+    label: 'Sex',
+    dataName: 'subjectCountByTumorSize',
+    datatable_field: 'tumor_size',
+    titleText: 'Cases',
+    show: true,
+  },
+  {
+    type: 'donut',
+    label: 'Race',
+    dataName: 'subjectCountByChemotherapyRegimen',
+    datatable_field: 'chemotherapy',
+    titleText: 'Cases',
+    show: true,
+  },
+  {
+    type: 'donut',
+    label: 'Ethnicity',
+    dataName: 'subjectCountByEndocrineTherapy',
+    datatable_field: 'endocrine_therapy',
+    titleText: 'Cases',
+    show: true,
+  },
+];
+// TODO:- Remove once widget work
+export const widgetsDataOrginal = [
+  {
+    type: 'sunburst',
     label: 'Programs and Arms',
     dataName: 'armsByPrograms',
     datatable_level1_field: 'program',

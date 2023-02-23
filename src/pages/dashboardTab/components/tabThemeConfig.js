@@ -31,7 +31,7 @@ export default ({
 
   const MuiTabs = {
     root: {
-      marginTop: '15px',
+      marginTop: '6px',
       marginLeft: '25px',
     },
     flexContainer: {

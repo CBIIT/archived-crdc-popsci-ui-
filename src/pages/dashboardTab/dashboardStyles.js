@@ -79,6 +79,9 @@ const styles = (theme) => ({
   },
   backgroundWidgets: {
     background: theme.palette.widgetBackground.main,
+    border: '0.5px solid #B4B4B4',
+    paddingBottom: '39px',
+    margin: '20px',
   },
   sideBar: {
     width: '250px',
