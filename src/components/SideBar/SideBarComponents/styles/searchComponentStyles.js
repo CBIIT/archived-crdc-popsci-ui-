@@ -18,14 +18,14 @@ const styles = () => ({
     color: '#fff',
   },
   paper: {
-    border: '1px solid #003F74',
+    border: '1.25px solid #0D8461',
     backgroundColor: '#717171',
     color: '#fff',
     borderRadius: 10,
     fontFamily: 'Lato',
     fontSize: 12,
     fontWeight: 500,
-    boxShadow: '0 0 0 2px rgba(179, 156, 124,0.36)',
+    boxShadow: '0 0 0 2px rgba(16,160,117,0.36)',
     '& ::-webkit-scrollbar': {
       width: '0.6em',
       height: '1em',
@@ -51,7 +51,7 @@ const styles = () => ({
       },
       '& :hover': {
         color: 'white',
-        backgroundColor: '#B39C7C',
+        backgroundColor: '#10A075',
       },
     },
   },
@@ -61,18 +61,18 @@ const styles = () => ({
   },
   inputRoot: {
     borderRadius: 10,
-    marginBottom: '11px',
+    marginBottom: '7px',
     boxSizing: 'border-box',
-    height: 24,
+    height: 32,
     width: '100%',
     '& .MuiOutlinedInput-notchedOutline': {
-      border: '1px solid #003F74',
+      border: '1.25px solid #0D8461',
     },
     '&:hover .MuiOutlinedInput-notchedOutline': {
-      border: '1px solid #003F74',
+      border: '1.25px solid #0D8461',
     },
     '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      border: '1px solid #003F74',
+      border: '1.25px solid #0D8461',
     },
     '& .MuiInputBase-input': {
       height: '7px',
@@ -90,7 +90,7 @@ const styles = () => ({
     justifyContent: 'space-between',
   },
   searchResultDetailText: {
-    color: '#5E3F14',
+    color: '#0D8662',
     lineHeight: '20px',
     fontFamily: 'Lato',
     fontSize: '11px',

@@ -9,46 +9,7 @@ export const searchTabTitleText = 'Search';
 // A maximum of 12 facetSearchData are allowed
 export const facetSearchData = [
   {
-    label: 'Study', field: 'group', api: 'subjectCountByProgram', apiForFiltering: 'filterSubjectCountByProgram', datafield: 'programs', section: 'Cases', show: true,
-  },
-  {
-    label: 'Study Type', field: 'group', api: 'subjectCountByStudy', apiForFiltering: 'filterSubjectCountByStudy', datafield: 'studies', section: 'Cases', show: true,
-  },
-  {
-    label: 'Enrollment Year', api: 'filterSubjectCountByAge', apiForFiltering: 'filterSubjectCountByFileType', datafield: 'age_at_index', section: 'Cases', show: true, slider: true, quantifier: 'Years',
-  },
-  {
-    label: 'Age At Enrollment', field: 'group', api: 'filterSubjectCountByAge', apiForFiltering: 'filterSubjectCountByFileType', datafield: 'rc_scores', section: 'Cases', show: true, slider: true, quantifier: 'Years', customNumberSort: true,
-  },
-  {
-    label: 'Sex', field: 'group', api: 'subjectCountByTumorSize', apiForFiltering: 'filterSubjectCountByTumorSize', datafield: 'tumor_sizes', section: 'Cases', show: true, customNumberSort: true,
-  },
-  {
-    label: 'Race', field: 'group', api: 'subjectCountByChemotherapyRegimen', apiForFiltering: 'filterSubjectCountByChemotherapyRegimen', datafield: 'chemo_regimen', section: 'Cases', show: true,
-  },
-  {
-    label: 'Ethnicity', field: 'group', api: 'subjectCountByTumorGrade', apiForFiltering: 'filterSubjectCountByTumorGrade', datafield: 'tumor_grades', section: 'Cases', show: true,
-  },
-  {
-    label: 'Diagnosed Cancer Type', field: 'group', api: 'subjectCountByErStatus', apiForFiltering: 'filterSubjectCountByErStatus', datafield: 'er_status', section: 'Cases', show: true,
-  },
-  {
-    label: 'Age At Diagnosis', api: 'filterSubjectCountByAge', apiForFiltering: 'filterSubjectCountByFileType', datafield: 'age_at_index', section: 'Cases', show: true, slider: true, quantifier: 'Years',
-  },
-  {
-    label: 'Biospecimens Available', field: 'group', api: 'subjectCountByPrStatus', apiForFiltering: 'filterSubjectCountByPrStatus', datafield: 'pr_status', section: 'Cases', show: true,
-  },
-]
-
-export const facetSearchDataOriginal = [
-  {
-    label: 'Program', field: 'group', api: 'filterSubjectCountByProgram', apiForFiltering: 'filterSubjectCountByProgram', datafield: 'programs', section: 'Cases', show: true,
-  },
-  {
-    label: 'Age', api: 'filterSubjectCountByAge',apiForFiltering: 'filterSubjectCountByFileType',datafield: 'age_at_index', section: 'Cases', show: true, slider: true, quantifier: 'Years',
-  },
-  {
-    label: 'Menopause Status', field: 'group', api: 'subjectCountByMenopauseStatus', apiForFiltering: 'filterSubjectCountByMenopauseStatus', datafield: 'meno_status', section: 'Cases', show: true,
+    label: 'Program', field: 'group', api: 'subjectCountByProgram', apiForFiltering: 'filterSubjectCountByProgram', datafield: 'programs', section: 'Cases', show: true,
   },
   {
     label: 'Arm', field: 'group', api: 'subjectCountByStudy', apiForFiltering: 'filterSubjectCountByStudy', datafield: 'studies', section: 'Cases', show: true,
@@ -77,7 +38,9 @@ export const facetSearchDataOriginal = [
   {
     label: 'Endocrine Therapy', field: 'group', api: 'subjectCountByEndocrineTherapy', apiForFiltering: 'filterSubjectCountByEndocrineTherapy', datafield: 'endo_therapies', section: 'Cases', show: true,
   },
-
+  {
+    label: 'Menopause Status', field: 'group', api: 'subjectCountByMenopauseStatus', apiForFiltering: 'filterSubjectCountByMenopauseStatus', datafield: 'meno_status', section: 'Cases', show: true,
+  },
   {
     label: 'Tissue Type', field: 'group', api: 'subjectCountByTissueType', apiForFiltering: 'filterSubjectCountByTissueType', datafield: 'tissue_type', section: 'Samples', show: true,
   },
@@ -90,16 +53,18 @@ export const facetSearchDataOriginal = [
   {
     label: 'File Type', field: 'group', api: 'subjectCountByFileType', apiForFiltering: 'filterSubjectCountByFileType', datafield: 'file_type', section: 'Files', show: true,
   },
-
+  {
+    label: 'Age', api: 'filterSubjectCountByAge', apiForFiltering: 'filterSubjectCountByFileType', datafield: 'age_at_index', section: 'Cases', show: true, slider: true, quantifier: 'Years',
+  },
 ];
 
 // --------------- Dashboard Sidebar Sections styling --------------
 export const facetSectionVariables = {
   Cases: {
-    color: '#6D5F5B',
-    backgroundColor: '#E8D7C1', // CASE IDS
-    checkBoxColorsOne: '#FFE8CB',
-    checkBoxColorsTwo: '#FFE8CB',
+    color: '#10A075',
+    backgroundColor: '#C0E9D7',
+    checkBoxColorsOne: '#E8F7DC',
+    checkBoxColorsTwo: '#F5FDEE',
     height: '5px',
     isExpanded: true,
   },
@@ -191,58 +156,6 @@ export const displayActiveFiltersQuery = true;
 export const widgetsData = [
   {
     type: 'sunburst',
-    label: 'Study',
-    dataName: 'armsByPrograms',
-    datatable_level1_field: 'program',
-    datatable_level2_field: 'arm',
-    titleText: 'Cases',
-    show: true,
-  },
-  {
-    type: 'donut',
-    label: 'Enrollment Year',
-    dataName: 'subjectCountByDiagnoses',
-    datatable_field: 'diagnosis',
-    titleText: 'Cases',
-    show: true,
-  },
-  {
-    type: 'donut',
-    label: 'Age-Range at Enrollment',
-    dataName: 'subjectCountByRecurrenceScore',
-    datatable_field: 'recurrence_score',
-    titleText: 'Cases',
-    show: true,
-  },
-  {
-    type: 'donut',
-    label: 'Sex',
-    dataName: 'subjectCountByTumorSize',
-    datatable_field: 'tumor_size',
-    titleText: 'Cases',
-    show: true,
-  },
-  {
-    type: 'donut',
-    label: 'Race',
-    dataName: 'subjectCountByChemotherapyRegimen',
-    datatable_field: 'chemotherapy',
-    titleText: 'Cases',
-    show: true,
-  },
-  {
-    type: 'donut',
-    label: 'Ethnicity',
-    dataName: 'subjectCountByEndocrineTherapy',
-    datatable_field: 'endocrine_therapy',
-    titleText: 'Cases',
-    show: true,
-  },
-];
-// TODO:- Remove once widget work
-export const widgetsDataOrginal = [
-  {
-    type: 'sunburst',
     label: 'Programs and Arms',
     dataName: 'armsByPrograms',
     datatable_level1_field: 'program',
@@ -301,12 +214,12 @@ export const externalLinkIcon = {
 
 // --------------- Facet resetIcon link configuration --------------
 // Ideal size for resetIcon is 16x16 px
-export const resetIcon = { // TODO:- Replace Icon
+export const resetIcon = {
   src: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/bento/images/icons/svgs/Clear-icon.svg',
   alt: 'Reset icon',
   size: '12 px',
 };
-export const resetIconFilter = { // TODO:- Replace Icon
+export const resetIconFilter = {
   src: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/bento/images/icons/svgs/Clear-icon.svg',
   alt: 'Reset icon',
   size: '12 px',

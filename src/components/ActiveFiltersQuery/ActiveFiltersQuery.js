@@ -433,12 +433,12 @@ const styles = () => ({
     borderRadius: '15px',
     fontFamily: 'Nunito',
     boxSizing: 'border-box',
-    backgroundColor: '#646464',
+    backgroundColor: '#969696',
     textTransform: 'capitalize',
     border: '1px solid #B4B4B4',
     padding: '1px 5px 0px 6px',
     '&:hover': {
-      backgroundColor: '#646464',
+      backgroundColor: '#969696',
     },
   },
   divider: {

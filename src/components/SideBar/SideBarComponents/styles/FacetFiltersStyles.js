@@ -55,7 +55,7 @@ const styles = () => ({
     justifyContent: 'space-between',
     width: '100%',
   },
-  sectionSummaryTextContainer: { // Facet Section
+  sectionSummaryTextContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -64,8 +64,7 @@ const styles = () => ({
     fontSize: 20,
     fontWeight: 300,
     marginLeft: 10,
-    color: '#000000',
-    textTransform: 'uppercase',
+    color: 'gray',
   },
   searchContainer: {
     zIndex: 3,
@@ -120,11 +119,11 @@ const styles = () => ({
   },
   findCaseButton: {
     marginLeft: '105px',
-    backgroundColor: '#B39C7C',
+    backgroundColor: '#10A075',
     boxSizing: 'border-box',
     height: 30,
     width: 40,
-    border: '1px solid #C7B7A2',
+    border: '1.25px solid #0D8461',
     cursor: 'pointer',
     borderRadius: 11,
     display: 'flex',
@@ -138,9 +137,9 @@ const styles = () => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'space-between',
-    backgroundColor: '#B39C7C',
+    backgroundColor: '#10A075',
     color: '#fff',
-    border: '1px solid #C7B7A2',
+    border: '1px solid #0D8461',
     borderRadius: 10,
     fontFamily: 'Lato',
     fontSize: 11,
@@ -148,7 +147,7 @@ const styles = () => ({
     paddingLeft: 16,
     paddingRight: 12,
     '&:hover': {
-      backgroundColor: '#B39C7C',
+      backgroundColor: '#10A075',
     },
   },
   findCaseIcon: {
@@ -164,17 +163,17 @@ const styles = () => ({
     height: 6,
     background: '#A6A6A6',
   },
-  thumb: { // Style for Slider thumb
+  thumb: {
     height: 16,
     width: 16,
-    background: 'linear-gradient(180deg, #CC8C68 20.45%, #DF9C3E 100%)',
+    background: '#10A075',
   },
-  track: { // Style for Slider
+  track: {
     borderRadius: 4,
     height: 6,
-    background: 'linear-gradient(180deg, #CC8C68 20.45%, #DF9C3E 100%)',
+    background: '#10A075',
     '&~&': {
-      background: 'linear-gradient(180deg, #CC8C68 20.45%, #DF9C3E 100%)',
+      background: '#10A075',
     },
   },
   sliderRoot: {
@@ -226,7 +225,7 @@ const styles = () => ({
   },
   sliderText: {
     marginTop: '1.5px',
-    color: '#000000',
+    color: '#10a075',
     lineHeight: '120%',
     fontFamily: 'Nunito',
     fontSize: '14px',
