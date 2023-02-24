@@ -17,7 +17,7 @@ const ICDCHeader = (props) => {
       logo={headerData.globalHeaderLogo}
       alt={headerData.globalHeaderLogoAltText}
       homeLink={headerData.globalHeaderLogoLink}
-      SearchComponent={SearchAUtoFill}
+      // SearchComponent={SearchAUtoFill}
     />
   );
 };

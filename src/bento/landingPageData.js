@@ -27,19 +27,15 @@ export const landingPageData = {
       statAPI: 'numberOfPrograms',
     },
     {
-      statTitle: 'Arms',
+      statTitle: 'Studies',
       statAPI: 'numberOfStudies',
     },
     {
       statTitle: 'Cases',
-      statAPI: 'numberOfSubjects',
+      statAPI: 'numberOfCases',
     },
     {
-      statTitle: 'samples',
-      statAPI: 'numberOfSamples',
-    },
-    {
-      statTitle: 'files',
+      statTitle: 'Files',
       statAPI: 'numberOfFiles',
     },
   ],
@@ -81,8 +77,7 @@ export const landingPageData = {
 export const GET_LANDING_PAGE_DATA_QUERY = gql`{
   numberOfPrograms
   numberOfStudies
-  numberOfSubjects
-  numberOfSamples
+  numberOfCases
   numberOfFiles
   }
   `;

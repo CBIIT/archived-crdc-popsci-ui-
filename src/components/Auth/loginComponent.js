@@ -14,7 +14,7 @@ const styles = () => ({
 
   logotype: {
     whiteSpace: 'nowrap',
-    color: '#24E4BE',
+    color: '#B2E079',
     fontFamily: 'Raleway',
     fontSize: '13px',
     letterSpacing: '1.25px',

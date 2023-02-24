@@ -97,7 +97,7 @@ const AfterSignIn = ({
 const styles = () => ({
   logotype: {
     whiteSpace: 'nowrap',
-    color: '#24E4BE',
+    color: '#B2E079',
     fontFamily: 'Raleway',
     fontSize: '15px',
     fontWeight: '600',
