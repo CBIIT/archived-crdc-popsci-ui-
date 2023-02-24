@@ -1,6 +1,6 @@
 export const navBarstyling = {
   global: {
-    backgroundColor: '#142D64',
+    backgroundColor: '#617497',
     height: '39px',
     padding: '9px 20px 0px 20px',
   },
@@ -11,7 +11,7 @@ export const navBarstyling = {
   },
   dropdownMenu: {
     paper: {
-      background: '#309EC4',
+      background: '#617497',
       width: '200px',
       padding: '5px 18px 18px 18px',
       marginLeft: '15px',

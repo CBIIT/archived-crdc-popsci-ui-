@@ -329,7 +329,7 @@ export async function getAllIds(type) {
       variables: {
       },
     })
-    .then((result) => result.data.idsLists)
+    .then((result) => result.data.idsLists || {subjectIds:{}})
     .catch((error) => store.dispatch(
       { type: 'DASHBOARDTAB_QUERY_ERR', error },
     ));
@@ -421,14 +421,14 @@ export async function clearAllFiltersExceptBulkUpload() {
 const convertResultInPrevType = (result) => {
   const payload = result;
   payload.data = {
-    ...result.data.searchSubjects,
+    ...result.data.searchCases,
     nodeCountsFromLists: {
-      numberOfFiles: result.data.searchSubjects.numberOfFiles,
-      numberOfLabProcedures: result.data.searchSubjects.numberOfLabProcedures,
-      numberOfPrograms: result.data.searchSubjects.numberOfPrograms,
-      numberOfSamples: result.data.searchSubjects.numberOfSamples,
-      numberOfStudies: result.data.searchSubjects.numberOfStudies,
-      numberOfSubjects: result.data.searchSubjects.numberOfSubjects,
+      numberOfFiles: result.data.searchCases.numberOfFiles,
+      numberOfLabProcedures: result.data.searchCases.numberOfLabProcedures,
+      numberOfPrograms: result.data.searchCases.numberOfPrograms,
+      numberOfSamples: result.data.searchCases.numberOfSamples,
+      numberOfStudies: result.data.searchCases.numberOfStudies,
+      numberOfSubjects: result.data.searchCases.numberOfSubjects,
     },
   };
 
@@ -638,7 +638,7 @@ export function fetchDataForDashboardTab(
   const { QUERY, sortfield, sortDirection } = getQueryAndDefaultSort(payload);
   const newFilters = filters;
   // deal with empty string inside the age_at_index filter
-  if (filters && filters.age_at_index.length === 2) {
+  if (filters && filters.age_at_index &&filters.age_at_index.length === 2) {
     if (filters.age_at_index.includes('')) {
       newFilters.age_at_index = [];
     }
@@ -1219,7 +1219,7 @@ const reducers = {
   },
   TOGGGLE_CHECKBOX_WITH_API: (state, item) => {
     let updatedCheckboxData1 = updateFilteredAPIDataIntoCheckBoxData(
-      item.data.searchSubjects, facetSearchData,
+      item.data.searchCases, facetSearchData,
     );
     const rangeData = updatedCheckboxData1.filter((sideBar) => sideBar.slider === true);
     updatedCheckboxData1 = updatedCheckboxData1.filter((sideBar) => sideBar.slider !== true);
@@ -1235,8 +1235,8 @@ const reducers = {
         data: checkboxData1,
         variables: item.allFilters,
       },
-      stats: getFilteredStat(item.data.searchSubjects, statsCount),
-      widgets: getWidgetsInitData(item.data.searchSubjects, widgetsData),
+      stats: getFilteredStat(item.data.searchCases, statsCount),
+      widgets: getWidgetsInitData(item.data.searchCases, widgetsData),
     };
   },
   LOCAL_SEARCH: (state, item) => {
@@ -1282,7 +1282,7 @@ const reducers = {
       currentActiveTab: item.currentTab,
       datatable: {
         ...state.datatable,
-        dataCase: item.data.subjectOverview,
+        dataCase: item.data.caseOverview,
         dataSample: item.data.sampleOverview,
         dataFile: item.data.fileOverview,
       },
@@ -1329,7 +1329,7 @@ const reducers = {
     };
   },
   RECEIVE_DASHBOARDTAB: (state, item) => {
-    const checkboxData = customCheckBox(item.data.searchSubjects, facetSearchData);
+    const checkboxData = customCheckBox(item.data.searchCases, facetSearchData);
     fetchDataForDashboardTab(tabIndex[0].title, allFilters());
     return item.data
       ? {
@@ -1340,7 +1340,7 @@ const reducers = {
         setSideBarLoading: false,
         searchCriteria: null,
         error: '',
-        stats: getStatInit(item.data.searchSubjects, statsCount),
+        stats: getStatInit(item.data.searchCases, statsCount),
         allActiveFilters: allFilters(),
         filteredSubjectIds: null,
         filteredSampleIds: null,
@@ -1354,7 +1354,7 @@ const reducers = {
         datatable: {
           filters: [],
         },
-        widgets: getWidgetsInitData(item.data.searchSubjects, widgetsData),
+        widgets: getWidgetsInitData(item.data.searchCases, widgetsData),
         dataCaseSelected: {
           selectedRowInfo: [],
           selectedRowIndex: [],
@@ -1380,7 +1380,7 @@ const reducers = {
       } : { ...state };
   },
   CLEAR_ALL: (state, item) => {
-    const checkboxData = customCheckBox(item.data.searchSubjects, facetSearchData);
+    const checkboxData = customCheckBox(item.data.searchCases, facetSearchData);
     fetchDataForDashboardTab(tabIndex[0].title, allFilters());
     return item.data
       ? {
@@ -1390,7 +1390,7 @@ const reducers = {
         hasError: false,
         setSideBarLoading: false,
         error: '',
-        stats: getStatInit(item.data.searchSubjects, statsCount),
+        stats: getStatInit(item.data.searchCases, statsCount),
         allActiveFilters: allFilters(),
         filteredSubjectIds: null,
         filteredSampleIds: null,
@@ -1415,7 +1415,7 @@ const reducers = {
         datatable: {
           filters: [],
         },
-        widgets: getWidgetsInitData(item.data.searchSubjects, widgetsData),
+        widgets: getWidgetsInitData(item.data.searchCases, widgetsData),
         dataCaseSelected: {
           ...state.dataCaseSelected,
         },
