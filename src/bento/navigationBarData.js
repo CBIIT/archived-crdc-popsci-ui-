@@ -22,7 +22,7 @@ export const navBarstyling = {
     link: {
       overflowWrap: 'normal',
       textDecoration: 'none',
-      color: 'black',
+      color: '#FFFFFF',
       fontSize: '14px',
       fontWeight: '600',
       lineSpacing: '1px',
@@ -40,6 +40,9 @@ export const navBarstyling = {
     iconSize: '30px',
     padding: '6px 20px 0px 5px',
   },
+  cartLabel:{
+    color: '#B2E079',
+  }
 };
 
 export const navBarData = [
@@ -83,7 +86,7 @@ export const navBarData = [
 export const navBarCartData = {
   cartLabel: '',
   cartLink: '/fileCentricCart',
-  cartIcon: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/bento/images/icons/svgs/Icon-Cart-Navbar.svg',
+  cartIcon: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/popsci/popsci/images/icons/svgs/cart.svg',
   cartIconAlt: 'cart_logo',
   cartLabelType: 'labelUnderCount',
 };

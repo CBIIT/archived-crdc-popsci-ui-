@@ -100,7 +100,7 @@ function loginView({ classes }) {
 
   return (
     <div className={classes.Container}>
-      <Stats />
+      {/* <Stats /> */}
       {/* ROW 1 */}
       <Grid
         container
