@@ -28,9 +28,10 @@ const SideBarContent = ({
 
   const clearFilters = () => {
     clearAllFilters();
-    if (typeof searchRef.current !== 'undefined') {
-      searchRef.current.clear();
-    }
+    // TODO: Disabled this temporary. #LocalFind
+    // if (typeof searchRef.current !== 'undefined') {
+    //   searchRef.current.clear();
+    // }
   };
 
   const countFilters = facetSearchData

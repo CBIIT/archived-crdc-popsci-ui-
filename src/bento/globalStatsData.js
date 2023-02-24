@@ -5,8 +5,11 @@ export const statsStyling = {
     horizontalStyle: true,
     statTitleFirst: true,
     height: '47px',
-    background: '#8DCAFF',
+    background: '#D2D0CC',
   },
+  statCount: {
+    color: '#003559',
+  }
 };
 
 export const globalStatsData = [
@@ -17,27 +20,17 @@ export const globalStatsData = [
     statAPI: 'numberOfPrograms',
   },
   {
-    statTitle: 'Arms',
+    statTitle: 'Studies',
     type: 'field',
     statAPI: 'numberOfStudies',
   },
   {
     statTitle: 'Cases',
     type: 'field',
-    statAPI: 'numberOfSubjects',
+    statAPI: 'numberOfCases',
   },
   {
-    statTitle: 'samples',
-    type: 'field',
-    statAPI: 'numberOfSamples',
-  },
-  {
-    statTitle: 'Assays',
-    type: 'field',
-    statAPI: 'numberOfLabProcedures',
-  },
-  {
-    statTitle: 'files',
+    statTitle: 'Files',
     type: 'field',
     statAPI: 'numberOfFiles',
   },
