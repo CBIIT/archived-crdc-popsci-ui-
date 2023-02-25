@@ -4,8 +4,8 @@ import gql from 'graphql-tag';
 // Ideal size for programListingIcon is 100x100 px
 // Ideal size for externalLinkIcon is 16x16 px
 const programListingIcon = {
-  src: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/bento/images/icons/svgs/programIcon.svg',
-  alt: 'Bento program logo',
+  src: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/popsci/images/icons/svgs/studiesIcon.svg',
+  alt: 'PopSci Study logo',
 };
 
 const externalLinkIcon = {
@@ -18,7 +18,7 @@ const table = {
   // Set 'display' to false to hide the table entirely
   display: true,
   // Table title
-  title: 'Programs',
+  title: 'Studies',
   // Field name for table data, need to be updated only when using a different GraphQL query
   dataField: 'programInfo',
   // Value must be one of the 'field' in columns
@@ -31,38 +31,29 @@ const table = {
   columns: [
     {
       dataField: 'program_acronym',
-      header: 'Program Code',
-      link: '/program/{program_id}',
+      header: 'Study Code',
+      link: '/study/{program_id}',
       display: true,
     },
     {
-      dataField: 'program_id',
-      header: 'Program ID',
+      dataField: 'pubmed_id',
+      header: 'Program',
     },
     {
       dataField: 'program_name',
-      header: 'Program Name',
+      header: 'Study Name',
     },
     {
       dataField: 'start_date',
-      header: 'Start Date',
+      header: 'Start Type',
     },
     {
-      dataField: 'end_date',
-      header: 'End Date',
-    },
-    {
-      dataField: 'pubmed_id',
-      header: 'PubMed ID',
-      link: 'https://pubmed.ncbi.nlm.nih.gov/{pubmed_id}',
-    },
-    {
-      dataField: 'num_studies',
-      header: 'Number of Arms',
+      dataField: 'program_id',
+      header: 'Study ID',
     },
     {
       dataField: 'num_subjects',
-      header: 'Associated Cases',
+      header: 'Cases',
     },
   ],
 };

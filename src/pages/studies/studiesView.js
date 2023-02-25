@@ -7,8 +7,8 @@ import { CustomDataTable, getOptions, getColumns } from 'bento-components';
 import globalData from '../../bento/siteWideConfig';
 import {
   table, programListingIcon, externalLinkIcon,
-} from '../../bento/programData';
-import Stats from '../../components/Stats/AllStatsController';
+} from '../../bento/studiesData';
+// import Stats from '../../components/Stats/AllStatsController';
 import { Typography } from '../../components/Wrappers/Wrappers';
 import {
   singleCheckBox, setSideBarToLoading, setDashboardTableLoading,
@@ -26,30 +26,57 @@ const Studies = ({ classes, data }) => {
       section: 'Filter By Cases',
     }]);
   };
+  const draftCloumns = getColumns(table, classes, data, externalLinkIcon, '/explore', redirectTo, '', globalData.replaceEmptyValueWith)
+
+  const customizedCloumns = draftCloumns.map(column => {
+    // TODO:- // Once PopSci API is ready change 'program_acronym' to 'study_code'
+    if (column.name === 'program_acronym') {
+      column['options'] = {
+        display: true,
+        customBodyRender: (value, tableMeta) => {
+          // TODO:- Find ways to get studyId from row.study_id
+          const studyId = tableMeta.rowData[4];
+          const href = `/#/study/${studyId}`
+          return (
+            <a href={href} className={classes.link}> {value} </a>
+          )
+        }
+      }
+    }
+    return column;
+  })
+  const columns = customizedCloumns
 
   return (
     <>
-      <Stats />
+      {/*<Stats />*/}
       <div className={classes.tableContainer}>
         <div className={classes.container}>
-          <div className={classes.header}>
-            <div className={classes.logo}>
-              <img
-                src={programListingIcon.src}
-                alt={programListingIcon.alt}
-              />
-
-            </div>
-            <div className={classes.headerTitle}>
-              <div className={classes.headerMainTitle}>
-                <span>
-                  <Typography>
-                    <span className={classes.headerMainTitle}>{table.title}</span>
-                  </Typography>
-                </span>
+          <Grid
+            container
+            direction="row"
+            justifyContent="flex-start"
+            alignItems="flex-end"
+            className={classes.header}
+          >
+            <Grid item xs className={classes.subHeader}>
+              <div className={classes.logo}>
+                <img
+                  src={programListingIcon.src}
+                  alt={programListingIcon.alt}
+                />
               </div>
-            </div>
-          </div>
+              <div className={classes.headerTitle}>
+                <div className={classes.headerMainTitle}>
+                  <span>
+                    <Typography>
+                      <span className={classes.headerMainTitle}>{table.title}</span>
+                    </Typography>
+                  </span>
+                </div>
+              </div>
+            </Grid>
+          </Grid>
 
           { table.display ? (
             <div id="table_programs" className={classes.tableDiv}>
@@ -57,8 +84,9 @@ const Studies = ({ classes, data }) => {
                 <Grid item xs={12}>
                   <CustomDataTable
                     data={data[table.dataField]}
-                    columns={getColumns(table, classes, data, externalLinkIcon, '/explore', redirectTo, '', globalData.replaceEmptyValueWith)}
+                    columns={columns}
                     options={getOptions(table, classes)}
+                    className={classes.customDataTable}
                   />
                 </Grid>
               </Grid>
@@ -72,14 +100,44 @@ const Studies = ({ classes, data }) => {
 };
 
 const styles = (theme) => ({
-
-  link: {
-    textDecoration: 'none',
-    fontWeight: 'bold',
-    color: theme.palette.text.link,
-    '&:hover': {
-      textDecoration: 'underline',
+  customDataTable:{
+    '& .MuiTableRow-head': {
+      borderBottom: '3px solid #1E66A4',
+      borderTop: '3.67px solid #1E66A4',
     },
+    '& .MuiTableCell-head': {
+      fontFamily: 'Open Sans',
+      fontWeight: 700,
+      fontSize: '15px',
+      lineHeight: '20.43px',
+      letterSpacing: '-0.02em',
+      color: '#0F253A',
+      textDecoration: 'none',
+    },
+    '& .MuiTableCell-head:first-child': {
+      paddingLeft: '20px',
+    },
+    '& .MuiTableCell-body': {
+      fontFamily: 'Nunito',
+      fontWeight: 400,
+      fontSize: '14px',
+      lineHeight: '15.46px',
+      color: '#003F74',
+    },
+    '& .MuiTableFooter-root': {
+      borderTop: '3px solid #F4F4F4',
+    },
+    '& .MuiTableCell-body:nth-child(3)': {
+      maxWidth: '400px',
+    },
+  },
+  link: {
+    fontFamily: 'Open Sans',
+    fontSize: '15px',
+    letterSpacing: '-0.02em',
+    textDecorationLine: 'underline',
+    lineHeight: '17px',
+    color: '#58930F',
   },
   card: {
     minHeight: '100%',
@@ -88,6 +146,7 @@ const styles = (theme) => ({
   },
   container: {
     margin: 'auto',
+    paddingTop: '74px',
     maxWidth: '1440px',
     paddingLeft: '36px',
     paddingRight: '36px',
@@ -103,25 +162,29 @@ const styles = (theme) => ({
     fontSize: '9pt',
     letterSpacing: '0.025em',
     color: '#000',
-    background: '#eee',
+    background: '#FFFFFF',
   },
   header: {
-    background: '#eee',
-    paddingLeft: '20px',
-    paddingRight: '50px',
-    borderBottom: '#42779A 10px solid',
-    height: '128px',
-    paddingTop: '35px',
+    background: '#FFFFFF',
+    borderBottom: '#1E66A4 3px solid',
+    // height: '128px',
+    marginBottom: '9px',
+    position: 'relative',
+  },
+  subHeader: {
+    height: '51px',
+    background: 'linear-gradient(270deg, #064667 20.89%, #56A6D0 81.63%)',
   },
   headerMainTitle: {
-    fontFamily: 'Lato',
-    letterSpacing: '0.025em',
-    color: '#274FA5',
-    fontSize: '24pt',
+    fontFamily: 'Poppins',
+    letterSpacing: '-0.02em',
+    color: '#FFFFFF',
+    bottom: '7px',
+    fontSize: '26px',
+    fontWeight: 300,
     position: 'absolute',
-    marginTop: '16px',
-    lineHeight: '25px',
-    marginLeft: '-3px',
+    lineHeight: '27.7px',
+    marginLeft: '0px',
   },
 
   headerTitle: {
@@ -133,12 +196,13 @@ const styles = (theme) => ({
   logo: {
     position: 'absolute',
     float: 'left',
-    marginLeft: '-17px',
+    top: '-23px',
+    marginLeft: '10px',
     width: '100px',
     filter: 'drop-shadow(-3px 2px 6px rgba(27,28,28,0.29))',
   },
   tableContainer: {
-    background: '#eee',
+    background: '#FFFFFF',
     paddingBottom: '50px',
   },
   tableDiv: {
