@@ -147,9 +147,7 @@ const styles = (theme) => ({
   container: {
     margin: 'auto',
     paddingTop: '74px',
-    maxWidth: '1440px',
-    paddingLeft: '36px',
-    paddingRight: '36px',
+    maxWidth: '1350px',
   },
   paper: {
     textAlign: 'center',
@@ -188,7 +186,7 @@ const styles = (theme) => ({
   },
 
   headerTitle: {
-    maxWidth: '1440px',
+    maxWidth: '1350px',
     margin: 'auto',
     float: 'left',
     marginLeft: '90px',
@@ -199,11 +197,11 @@ const styles = (theme) => ({
     top: '-23px',
     marginLeft: '10px',
     width: '100px',
-    filter: 'drop-shadow(-3px 2px 6px rgba(27,28,28,0.29))',
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
   },
   tableContainer: {
     background: '#FFFFFF',
-    paddingBottom: '50px',
+    padding: '0px 45px 121px 45px',
   },
   tableDiv: {
     margin: 'auto',
