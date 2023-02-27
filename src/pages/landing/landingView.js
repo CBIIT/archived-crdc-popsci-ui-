@@ -19,7 +19,7 @@ const LandingView = ({ classes, statsData }) => (
           <Grid item xs={4} className={classes.heroTextContainer}>
             <div className={classes.heroTextWrapper}>
               <div className={classes.headerTitle}>
-                { landingPageData.callToActionTitle }
+                { landingPageData.callToActionTitle } <br/> {landingPageData.callToActionTitle2}
               </div>
               <div className={classes.headerContent}>
                 { landingPageData.callToActionDescription}
@@ -211,12 +211,11 @@ const styles = () => ({
   texture: {
     backgroundSize: 'cover',
     background: '#804098',
-    padding: '120px 0 80px 0',
+    padding: '81px 0 80px 0',
   },
   container: {
     fontFamily: 'Raleway, sans-serif',
     margin: '0 auto',
-
   },
 
   whiteSection: {

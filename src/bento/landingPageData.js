@@ -5,21 +5,22 @@ import gql from 'graphql-tag';
 // Tile1 Tile2 Tile3 images 293x349 px
 // Tile4 image optimum size 600x 436 px
 export const landingPageData = {
-  callToActionTitle: 'POPULATION SCIENCE DATA COMMONS',
+  callToActionTitle: 'POPULATION SCIENCE',
+  callToActionTitle2: 'DATA COMMONS',
   callToActionDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   callToActionButtonText: 'search cases',
   callToActionButtonIcon: {
     alt: 'Right Arrow',
-    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/popsci/popsci/images/icons/svgs/homeRightArrow.svg',
+    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/popsci/images/icons/svgs/homeRightArrow.svg',
   },
   callToActionLink: '/explore',
   landingPageHero: {
     alt: 'Alt tag1',
-    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/popsci/popsci/images/icons/png/landing_Hero_Graphic.png',
+    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/popsci/images/icons/png/landing_Hero_Graphic.png',
   },
   landingPagePeoplePieChart: {
     alt: 'People Pie Chart ',
-    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/popsci/popsci/images/icons/svgs/homePagePopImage.svg',
+    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/popsci/images/icons/svgs/homePagePopImage.svg',
   },
   landingPageStatsBar: [
     {
@@ -41,7 +42,7 @@ export const landingPageData = {
   ],
   tile1: {
     alt: '',
-    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/popsci/popsci/images/icons/png/homeImageforAboutCard.png',
+    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/popsci/images/icons/png/homeImageforAboutCard.png',
     titleText: 'About Population Science Data Commons',
     descriptionText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.',
     callToActionText: 'explore',
@@ -49,7 +50,7 @@ export const landingPageData = {
   },
   tile2: {
     alt: '',
-    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/popsci/popsci/images/icons/png/TrialsImage.png',
+    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/popsci/images/icons/png/TrialsImage.png',
     titleText: 'Studies',
     descriptionText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
     callToActionText: 'Read More',
@@ -57,7 +58,7 @@ export const landingPageData = {
   },
   tile3: {
     alt: '',
-    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/popsci/popsci/images/icons/png/requestAccessImage.png',
+    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/popsci/images/icons/png/requestAccessImage.png',
     titleText: 'Request Access',
     descriptionText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
     callToActionText: 'Read More',
@@ -65,7 +66,7 @@ export const landingPageData = {
   },
   tile4: {
     alt: '',
-    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/popsci/popsci/images/icons/png/CasesImage.png',
+    img: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/popsci/images/icons/png/CasesImage.png',
     titleText: 'Cases',
     descriptionText: 'Lorem ipsum dolor sit amet, onsectetur adipiscing elit, sed do eiusmod tempor incididunt.',
     callToActionText: 'Read More',
