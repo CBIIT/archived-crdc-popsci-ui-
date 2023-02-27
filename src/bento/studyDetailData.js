@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 // --------------- Page title configuration --------------
 const pageTitle = {
-  label: 'Program :',
+  label: 'Study Code',
   dataField: 'program_acronym',
 };
 
@@ -17,18 +17,18 @@ const breadCrumb = {
 
 // --------------- Aggregated count configuration --------------
 const aggregateCount = {
-  labelText: 'Cases',
+  labelText: 'Subjects in this Study',
   dataField: 'num_subjects',
   link: '/explore',
   display: true,
 };
 
 // --------------- Icons configuration --------------
-// Ideal size for programDetailIcon is 107x107 px
+// Ideal size for studyDetailIcon is 107x107 px
 // Ideal size for externalLinkIcon is 16x16 px
-const programDetailIcon = {
-  src: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/bento/images/icons/svgs/programIcon.svg',
-  alt: 'Bento program logo',
+const studyDetailIcon = {
+  src: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/popsci/images/icons/svgs/studyDetailIcon.svg',
+  alt: 'Population Science Study Detail logo',
 };
 
 const externalLinkIcon = {
@@ -42,28 +42,15 @@ const leftPanel = {
   attributes: [
     {
       dataField: 'program_acronym',
-      label: 'Program',
+      label: 'Study ID',
     },
     {
       dataField: 'program_name',
-      label: 'Program Name',
-    },
-    {
-      dataField: 'program_id',
-      label: 'Program Id',
+      label: 'Study Name',
     },
     {
       dataField: 'program_full_description',
-      label: 'Program Description',
-    },
-    {
-      dataField: 'institution_name',
-      label: 'Institution',
-    },
-    {
-      dataField: 'program_external_url',
-      label: 'External Link to Program',
-      externalLinkToLabel: true,
+      label: 'Description',
     },
   ],
 };
@@ -71,6 +58,24 @@ const leftPanel = {
 // --------------- Right Pannel configuration --------------
 // Ideal size for fileIconSrc is 66x53 px
 const rightPanel = {
+  attributes: [
+    {
+      dataField: 'program_acronym',
+      label: 'Study Type',
+    },
+    {
+      dataField: 'program_name',
+      label: 'Actual Study Start Date',
+    },
+    {
+      dataField: 'program_name',
+      label: 'Actual Primary Completion Date',
+    },
+    {
+      dataField: 'program_full_description',
+      label: 'Organization',
+    },
+  ],
   widget: [
     {
       dataField: 'diagnoses',
@@ -94,7 +99,7 @@ const table = {
   // Set 'display' to false to hide the table entirely
   display: true,
   // Table title
-  title: 'ARMS',
+  title: 'Associated Files',
   // Field name for table data, need to be updated only when using a different GraphQL query
   dataField: 'studies',
   // Value must be one of the 'field' in columns
@@ -102,29 +107,32 @@ const table = {
   // 'asc' or 'desc'
   defaultSortDirection: 'asc',
   // Set 'selectableRows' to true to show the row selection
-  selectableRows: false,
+  selectableRows: true,
+  viewColumns: true,
+  download: true,
+  headerPagination: true,
   // A maximum of 10 columns are allowed
   columns: [
     {
       dataField: 'study_acronym',
-      header: 'Arm',
+      header: 'File Name',
       link: '/arm/{study_acronym}',
     },
     {
       dataField: 'study_name',
-      header: 'Arm Name',
+      header: 'File Type',
     },
     {
       dataField: 'study_full_description',
-      header: 'Arm Description',
+      header: 'Description',
     },
     {
       dataField: 'study_type',
-      header: 'Arm Type',
+      header: 'Format',
     },
     {
       dataField: 'num_subjects',
-      header: 'Associated Cases',
+      header: 'Size',
     },
   ],
 };
@@ -163,7 +171,7 @@ export {
   pageTitle,
   pageSubTitle,
   aggregateCount,
-  programDetailIcon,
+  studyDetailIcon,
   leftPanel,
   rightPanel,
   externalLinkIcon,
