@@ -6,26 +6,20 @@ import {
 import { Link } from 'react-router-dom';
 import {
   CustomDataTable,
-  cn,
   manipulateLinks,
   getOptions,
   getColumns,
-  CustomActiveDonut,
 } from 'bento-components';
 import globalData from '../../bento/siteWideConfig';
 import {
   pageTitle, table, externalLinkIcon,
-  studyDetailIcon, breadCrumb, aggregateCount,
-  pageSubTitle, leftPanel, rightPanel,
+  studyDetailIcon, aggregateCount, rightPanel,
 } from '../../bento/studyDetailData';
 import StatsView from '../../components/Stats/StatsView';
 import { Typography } from '../../components/Wrappers/Wrappers';
 import {
   singleCheckBox, setSideBarToLoading, setDashboardTableLoading,
 } from '../dashboardTab/store/dashboardReducer';
-import CustomBreadcrumb from '../../components/Breadcrumb/BreadcrumbView';
-import Widget from '../../components/Widgets/WidgetView';
-import colors from '../../utils/colors';
 
 const StudyView = ({ classes, data, theme }) => {
   const programData = data.programDetail;
@@ -63,17 +57,110 @@ const StudyView = ({ classes, data, theme }) => {
     numberOfFiles: programData.num_files !== undefined ? programData.num_files : 'undefined',
   };
 
-  const breadCrumbJson = [{
-    name: `${breadCrumb.label}`,
-    to: `${breadCrumb.link}`,
-    isALink: true,
-  }];
-
   const updatedAttributesData = manipulateLinks(rightPanel.attributes);
+
+  const displayStudyDetail = (attribute, index) => {
+    return (
+      <div>
+        {
+        attribute.internalLink
+          ? (
+            <div>
+              <span className={classes.detailContainerHeader}>{attribute.label}</span>
+              <div className={classes.contentContainer}>
+                <span className={classes.content}>
+                  {' '}
+                  <Link
+                    className={classes.link}
+                    to={`${attribute.actualLink}${programData[updatedAttributesData[attribute.actualLinkId].dataField]}`}
+                  >
+                    {programData[attribute.dataField]}
+                  </Link>
+                  {' '}
+                </span>
+              </div>
+            </div>
+          )
+          : attribute.externalLink
+            ? (
+              <div>
+                <span
+                  className={classes.detailContainerHeader}
+                >
+                  {attribute.label}
+                </span>
+                <div className={classes.contentContainer}>
+                  <span className={classes.content}>
+                    {' '}
+                    <a
+                      href={`${attribute.actualLink}${programData[updatedAttributesData[attribute.actualLinkId].dataField]}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={classes.link}
+                    >
+                      {programData[attribute.dataField]}
+                    </a>
+                    <img
+                      src={externalLinkIcon.src}
+                      alt={externalLinkIcon.alt}
+                      className={classes.externalLinkIcon}
+                    />
+                    {' '}
+                  </span>
+                </div>
+              </div>
+            )
+            : attribute.internalLinkToLabel
+              ? (
+                <div>
+                  <span
+                    className={classes.detailContainerHeaderLink}
+                  >
+                    <a href={`${programData[attribute.dataField]}`} rel="noopener noreferrer">{attribute.label}</a>
+                  </span>
+                </div>
+              )
+              : attribute.externalLinkToLabel
+                ? (
+                  <div>
+                    <span
+                      className={classes.detailContainerHeaderLink}
+                    >
+                      <a href={`${programData[attribute.dataField]}`} target="_blank" rel="noopener noreferrer">{attribute.label}</a>
+                      <img
+                        src={externalLinkIcon.src}
+                        alt={externalLinkIcon.alt}
+                        className={classes.externalLinkIcon}
+                      />
+                    </span>
+                  </div>
+                )
+                : (
+                  <div>
+                    <span
+                      className={classes.detailContainerHeader}
+                      id={`program_detail_left_section_title_${index + 1}`}
+                    >
+                      {attribute.label}
+                    </span>
+                    <div className={classes.contentContainer}>
+                      <span className={classes.content} id={`program_detail_left_section_description_${index + 1}`}>
+                        {' '}
+                        {programData[attribute.dataField]}
+                        {' '}
+                      </span>
+                    </div>
+                  </div>
+                )
+        }
+      </div>
+    )
+  }
 
   return (
     <>
       <StatsView data={stat} />
+      {/* Study Detail: First Section */}
       <div className={classes.topContainer}>
         <div className={classes.topTitle}>
           <span className={classes.parentPage}> Studies </span>
@@ -81,6 +168,8 @@ const StudyView = ({ classes, data, theme }) => {
           <span className={classes.topStudyId}> {programData[pageTitle.dataField]} </span>
         </div>
         <div className={classes.container}>
+
+          {/* First Section: Header */}
           <Grid
             container
             direction="row"
@@ -123,224 +212,34 @@ const StudyView = ({ classes, data, theme }) => {
               </div>
             </Grid>
           </Grid>
-
-          <div className={classes.detailContainer}>
-
-            <Grid container spacing={5}>
-              <Grid item lg={6} sm={6} xs={12} container>
-                <Grid container spacing={4} direction="row" className={classes.detailContainerLeft}>
-                  {updatedAttributesData.slice(0, 6).map((attribute, index) => (
-                    <Grid item xs={12}>
-                      <div>
-                        {
-                        attribute.internalLink
-                          ? (
-                            <div>
-                              <span className={classes.detailContainerHeader}>{attribute.label}</span>
-                              <div>
-                                <span className={classes.content}>
-                                  {' '}
-                                  <Link
-                                    className={classes.link}
-                                    to={`${attribute.actualLink}${programData[updatedAttributesData[attribute.actualLinkId].dataField]}`}
-                                  >
-                                    {programData[attribute.dataField]}
-                                  </Link>
-                                  {' '}
-                                </span>
-                              </div>
-                            </div>
-                          )
-                          : attribute.externalLink
-                            ? (
-                              <div>
-                                <span
-                                  className={classes.detailContainerHeader}
-                                >
-                                  {attribute.label}
-                                </span>
-                                <div>
-                                  <span className={classes.content}>
-                                    {' '}
-                                    <a
-                                      href={`${attribute.actualLink}${programData[updatedAttributesData[attribute.actualLinkId].dataField]}`}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className={classes.link}
-                                    >
-                                      {programData[attribute.dataField]}
-                                    </a>
-                                    <img
-                                      src={externalLinkIcon.src}
-                                      alt={externalLinkIcon.alt}
-                                      className={classes.externalLinkIcon}
-                                    />
-                                    {' '}
-                                  </span>
-                                </div>
-                              </div>
-                            )
-                            : attribute.internalLinkToLabel
-                              ? (
-                                <div>
-                                  <span
-                                    className={classes.detailContainerHeaderLink}
-                                  >
-                                    <a href={`${programData[attribute.dataField]}`} rel="noopener noreferrer">{attribute.label}</a>
-                                  </span>
-                                </div>
-                              )
-                              : attribute.externalLinkToLabel
-                                ? (
-                                  <div>
-                                    <span
-                                      className={classes.detailContainerHeaderLink}
-                                    >
-                                      <a href={`${programData[attribute.dataField]}`} target="_blank" rel="noopener noreferrer">{attribute.label}</a>
-                                      <img
-                                        src={externalLinkIcon.src}
-                                        alt={externalLinkIcon.alt}
-                                        className={classes.externalLinkIcon}
-                                      />
-                                    </span>
-                                  </div>
-                                )
-                                : (
-                                  <div>
-                                    <span
-                                      className={classes.detailContainerHeader}
-                                      id={`program_detail_left_section_title_${index + 1}`}
-                                    >
-                                      {attribute.label}
-                                    </span>
-                                    <div>
-                                      <span className={classes.content} id={`program_detail_left_section_description_${index + 1}`}>
-                                        {' '}
-                                        {programData[attribute.dataField]}
-                                        {' '}
-                                      </span>
-                                    </div>
-                                  </div>
-                                )
-  }
-                      </div>
-                    </Grid>
-                  ))}
-
-                </Grid>
-              </Grid>
-
-              <Grid
-                item
-                lg={6}
-                sm={6}
-                xs={12}
-              >
-                <Grid container spacing={16} direction="row" className={classes.detailContainerRight}>
+          {/* First Section: Study Detail */}
+          <Grid container className={classes.detailContainer}>
+            {/* First Section - Study Detail: LEFT */}
+            <Grid item lg={6} sm={6} xs={12} container>
+              <Grid container direction="row" className={classes.detailContainerLeft}>
                 {updatedAttributesData.slice(0, 6).map((attribute, index) => (
-                  <Grid item xs={12}>
-                    <div>
-                      {
-                      attribute.internalLink
-                        ? (
-                          <div>
-                            <span className={classes.detailContainerHeader}>{attribute.label}</span>
-                            <div>
-                              <span className={classes.content}>
-                                {' '}
-                                <Link
-                                  className={classes.link}
-                                  to={`${attribute.actualLink}${programData[updatedAttributesData[attribute.actualLinkId].dataField]}`}
-                                >
-                                  {programData[attribute.dataField]}
-                                </Link>
-                                {' '}
-                              </span>
-                            </div>
-                          </div>
-                        )
-                        : attribute.externalLink
-                          ? (
-                            <div>
-                              <span
-                                className={classes.detailContainerHeader}
-                              >
-                                {attribute.label}
-                              </span>
-                              <div>
-                                <span className={classes.content}>
-                                  {' '}
-                                  <a
-                                    href={`${attribute.actualLink}${programData[updatedAttributesData[attribute.actualLinkId].dataField]}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={classes.link}
-                                  >
-                                    {programData[attribute.dataField]}
-                                  </a>
-                                  <img
-                                    src={externalLinkIcon.src}
-                                    alt={externalLinkIcon.alt}
-                                    className={classes.externalLinkIcon}
-                                  />
-                                  {' '}
-                                </span>
-                              </div>
-                            </div>
-                          )
-                          : attribute.internalLinkToLabel
-                            ? (
-                              <div>
-                                <span
-                                  className={classes.detailContainerHeaderLink}
-                                >
-                                  <a href={`${programData[attribute.dataField]}`} rel="noopener noreferrer">{attribute.label}</a>
-                                </span>
-                              </div>
-                            )
-                            : attribute.externalLinkToLabel
-                              ? (
-                                <div>
-                                  <span
-                                    className={classes.detailContainerHeaderLink}
-                                  >
-                                    <a href={`${programData[attribute.dataField]}`} target="_blank" rel="noopener noreferrer">{attribute.label}</a>
-                                    <img
-                                      src={externalLinkIcon.src}
-                                      alt={externalLinkIcon.alt}
-                                      className={classes.externalLinkIcon}
-                                    />
-                                  </span>
-                                </div>
-                              )
-                              : (
-                                <div>
-                                  <span
-                                    className={classes.detailContainerHeader}
-                                    id={`program_detail_left_section_title_${index + 1}`}
-                                  >
-                                    {attribute.label}
-                                  </span>
-                                  <div>
-                                    <span className={classes.content} id={`program_detail_left_section_description_${index + 1}`}>
-                                      {' '}
-                                      {programData[attribute.dataField]}
-                                      {' '}
-                                    </span>
-                                  </div>
-                                </div>
-                              )
-}
-                    </div>
+                  <Grid item xs={12} className={classes.insideDetailContainerLeft}>
+                    { displayStudyDetail(attribute, index) }
                   </Grid>
                 ))}
-                </Grid>
               </Grid>
-
             </Grid>
-          </div>
+            {/* First Section - Study Detail: RIGHT */}
+            <Grid item lg={6} sm={6} xs={12}>
+              <Grid container direction="row" className={classes.detailContainerRight}>
+              {updatedAttributesData.slice(0, 6).map((attribute, index) => (
+                <Grid item xs={12} className={classes.insideDetailContainerRight}>
+                  { displayStudyDetail(attribute, index) }
+                </Grid>
+              ))}
+              </Grid>
+            </Grid>
+
+          </Grid>
         </div>
       </div>
+
+      {/* Study Detail: Second Section */}
       { table.display ? (
         <div id="table_program_detail" className={classes.tableContainer}>
 
@@ -353,7 +252,7 @@ const StudyView = ({ classes, data, theme }) => {
                 <Grid item xs={12}>
                   <Typography>
                     <CustomDataTable
-                      data={data.programDetail[table.dataField]} // data.programDetail[table.dataField]
+                      data={[{}]} // data.programDetail[table.dataField]
                       columns={getColumns(table, classes, data, externalLinkIcon, '/explore', redirectToArm, '', globalData.replaceEmptyValueWith)}
                       options={getOptions(table, classes)}
                     />
@@ -375,7 +274,7 @@ const styles = (theme) => ({
   topTitle: {
     maxWidth: '1350px',
     margin: 'auto',
-    marginTop: '8px',
+    paddingTop: '8px',
     fontFamily: 'Open Sans',
     fontWeight: 700,
     fontSize: '12px',
@@ -391,15 +290,13 @@ const styles = (theme) => ({
     color: '#646464',
   },
   topContainer: {
-    background: '#FFFFFF',
-    // border: '5px solid purple'
+    backgroundColor: '#FFFFFF',
   },
   container: {
     margin: 'auto',
     maxWidth: '1350px',
     paddingTop: '74px',
     background: '#FFFFFF !important',
-    border: '0px solid black',
   },
   header: {
     background: '#FFFFFF',
@@ -475,10 +372,15 @@ const styles = (theme) => ({
   paddingBottm17: {
     paddingBottm: '17px',
   },
+  contentContainer: {
+    marginTop: '7px',
+  },
   content: {
-    fontSize: '15px',
-    fontFamily: theme.custom.fontFamily,
-    lineHeight: '14px',
+    fontFamily: 'Open Sans',
+    fontWeight: 400,
+    fontSize: '14px',
+    lineHeight: '17px',
+    color: '#000000',
   },
   warning: {
     color: theme.palette.warning.main,
@@ -557,22 +459,22 @@ const styles = (theme) => ({
 
   detailContainer: {
     maxWidth: '1350px',
-    margin: '9px auto 13px auto',
     paddingLeft: '16px',
     fontFamily: theme.custom.fontFamily,
     letterSpacing: '0.014em',
     color: '#000000',
     size: '12px',
     lineHeight: '23px',
-    height: '525px',
-    // border: '1px solid green',
+    height: '589px',
   },
   detailContainerHeader: {
+    fontFamily: 'Open Sans',
+    fontWeight: 600,
+    fontSize: '19px',
+    lineHeight: '25px',
+    letterSpacing: '-0.02em',
+    color: '#24415C',
     textTransform: 'uppercase',
-    fontFamily: 'Lato',
-    fontSize: '17px',
-    letterSpacing: '0.025em',
-    color: '#0296C9',
   },
   detailContainerHeaderLink: {
     fontFamily: 'Raleway',
@@ -586,37 +488,64 @@ const styles = (theme) => ({
     padding: ' 35px 0 63px 2px !important',
   },
   detailContainerLeft: {
+    padding: '22px 74px 0px 16px !important',
     display: 'block',
-    padding: '4px 48px 12px 0px !important',
-    minHeight: '500px',
-    maxHeight: '500px',
+    minHeight: '567px',
+    maxHeight: '567px',
     overflowY: 'auto',
     overflowX: 'hidden',
-    width: '103.9%',
-    margin: '0px -8px -5px 0px',
-    // border: '1px solid red',
+    borderRight: '1px solid #76C4E4',
+
+    '&::-webkit-scrollbar': {    
+      width: '7px',
+      border: 'none',
+    },
+    '&::-webkit-scrollbar-track': {    
+      background: 'white',
+    },
+    '&::-webkit-scrollbar-thumb': {    
+      background: '#76C4E4',
+    },
+    '&::-webkit-scrollbar-track-piece': {
+      background: 'white',
+    }
+  },
+  insideDetailContainerLeft: {
+    marginBottom: '33px',
   },
   borderRight: {
     borderRight: '#81a6b9 1px solid',
   },
   detailContainerRight: {
-    padding: '5px 0 5px 36px !important',
-    minHeight: '500px',
-    maxHeight: '500px',
+    padding: '22px 48px 0px 53px !important',
+    minHeight: '567px',
+    maxHeight: '567px',
     overflowY: 'auto',
     overflowX: 'hidden',
-    height: '500px',
-    width: '105%',
-    borderLeft: '1px solid #81A6BA',
-    borderRight: '1px solid #81A6BA',
-    marginLeft: '-26px',
-    // border: '1px solid black',
-  },
+    height: '567px',
+    borderRight: '1px solid #76C4E4',
 
+    '&::-webkit-scrollbar': {    
+      width: '7px',
+      border: 'none',
+    },
+    '&::-webkit-scrollbar-track': {    
+      background: 'white',
+    },
+    '&::-webkit-scrollbar-thumb': {    
+      background: '#76C4E4',
+    },
+    '&::-webkit-scrollbar-track-piece': {
+      background: 'white',
+    }
+  },
+  insideDetailContainerRight: {
+    marginBottom: '33px',
+  },
   tableContainer: {
     background: '#f3f3f3',
     paddingBottom: '121px',
-    // border: '5px solid red',
+    // border: '2px solid red',
   },
   tableHeader: {
     paddingLeft: '30px',
@@ -674,10 +603,11 @@ const styles = (theme) => ({
   },
   tableTitle: {
     textTransform: 'uppercase',
-    fontFamily: 'Lato',
-    fontSize: '17px',
-    letterSpacing: '0.025em',
-    color: '#0296c9',
+    fontFamily: 'Open Sans',
+    fontSize: '19px',
+    lineHeight: '24.7px',
+    letterSpacing: '-0.02em',
+    color: '#24415C',
     paddingBottom: '20px',
   },
   fileContainer: {
