@@ -103,9 +103,9 @@ const TabView = ({
   }
 
   useEffect(() => {
-    initSaveButtonDefaultStyle(saveButton);
-    initSaveButtonDefaultStyle(saveButton2);
-    updateButtonStatus(selectedRowInfo.length > 0);
+    // initSaveButtonDefaultStyle(saveButton);
+    // initSaveButtonDefaultStyle(saveButton2);
+    // updateButtonStatus(selectedRowInfo.length > 0);
   });
 
   async function exportFiles() {
@@ -223,7 +223,7 @@ const TabView = ({
 
   return (
     <div>
-      <Grid item xs={12} className={classes.saveButtonDiv}>
+      {/* <Grid item xs={12} className={classes.saveButtonDiv}>
         <SelectAllModal tableIDForButton={tableID} openSnack={openSnack} />
         <AddToCartAlertDialog
           cartWillFull={cartIsFull}
@@ -258,7 +258,7 @@ const TabView = ({
           </IconButton>
         </ToolTip>
 
-      </Grid>
+      </Grid> */}
       <Grid container>
         <Grid item xs={12} id={tableID}>
           <CustomDataTable
@@ -277,7 +277,7 @@ const TabView = ({
           />
         </Grid>
       </Grid>
-      <Grid item xs={12} className={classes.saveButtonDivBottom}>
+      {/* <Grid item xs={12} className={classes.saveButtonDivBottom}>
         <button
           type="button"
           ref={saveButton}
@@ -319,7 +319,7 @@ const TabView = ({
           </Link>
         </div>
 
-      </Grid>
+      </Grid> */}
     </div>
   );
 };
