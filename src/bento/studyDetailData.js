@@ -18,7 +18,7 @@ const breadCrumb = {
 // --------------- Aggregated count configuration --------------
 const aggregateCount = {
   labelText: 'Subjects in this Study',
-  dataField: 'numberOfStudies',
+  dataField: 'cases',
   link: '/explore',
   display: true,
 };

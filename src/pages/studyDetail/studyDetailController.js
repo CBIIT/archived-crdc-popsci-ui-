@@ -6,11 +6,9 @@ import { Typography } from '../../components/Wrappers/Wrappers';
 import { GET_STUDY_DETAIL_DATA_QUERY } from '../../bento/studyDetailData';
 
 const ProgramDetailContainer = ({ match }) => {
-  console.log("||: ", match)
   const { loading, error, data } = useQuery(GET_STUDY_DETAIL_DATA_QUERY, {
     variables: { study_code: match.params.id },
   });
-  console.log("||: ", loading, error, data)
 
   if (loading) return <CircularProgress />;
   if (error || !data || data.studyDetail.study_code !== match.params.id) {

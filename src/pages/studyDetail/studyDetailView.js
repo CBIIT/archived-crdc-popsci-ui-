@@ -22,7 +22,6 @@ import {
 } from '../dashboardTab/store/dashboardReducer';
 
 const StudyView = ({ classes, data, theme }) => {
-  console.log("|| data: ", data)
   const programData = data.studyDetail;
 
   const redirectTo = () => {
@@ -59,7 +58,6 @@ const StudyView = ({ classes, data, theme }) => {
   const rightUpdatedAttributesData = manipulateLinks(rightPanel.attributes);
 
   const displayStudyDetail = (updatedAttributesData, attribute, index) => {
-    console.log("|| attribute: ", attribute)
     return (
       <div>
         {
@@ -440,7 +438,8 @@ const styles = (theme) => ({
     right: '115px',
     float: 'right',
     bottom: '13px',
-    width: '200px',
+    maxWidth: '350px',
+    minWidth: 'fit-content',
     height: '21px',
     textAlign: 'center',
 
@@ -572,9 +571,6 @@ const styles = (theme) => ({
     fontSize: '12px',
     fontWeight: 'bold',
     color: '#c32c2e',
-    '&:hover': {
-      textDecoration: 'underline',
-    },
   },
   button: {
     borderRadius: '22px',

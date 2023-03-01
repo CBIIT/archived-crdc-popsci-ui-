@@ -28,24 +28,7 @@ const Studies = ({ classes, data }) => {
   };
   const draftCloumns = getColumns(table, classes, data, externalLinkIcon, '/explore', redirectTo, '', globalData.replaceEmptyValueWith)
 
-  const customizedCloumns = draftCloumns.map(column => {
-    // TODO:- // Once PopSci API is ready change 'program_acronym' to 'study_code'
-    if (column.name === 'program_acronym') {
-      column['options'] = {
-        display: true,
-        customBodyRender: (value, tableMeta) => {
-          // TODO:- Find ways to get studyId from row.study_id
-          const studyId = tableMeta.rowData[4];
-          const href = `/#/study/${studyId}`
-          return (
-            <a href={href} className={classes.link}> {value} </a>
-          )
-        }
-      }
-    }
-    return column;
-  })
-  const columns = customizedCloumns
+  const columns = draftCloumns
 
   return (
     <>
