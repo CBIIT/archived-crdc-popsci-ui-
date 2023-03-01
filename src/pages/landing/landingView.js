@@ -4,7 +4,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-// import StatsView from './components/statsView';
+import StatsView from './components/statsView';
 import { Button } from '../../components/Wrappers/Wrappers';
 import { landingPageData } from '../../bento/landingPageData';
 import icon from '../../assets/landing/LP_ReadMore.svg';
@@ -41,8 +41,8 @@ const LandingView = ({ classes, statsData }) => (
         </Grid>
       </div>
     </div>
-    {/*<div className={classes.whiteSection} />
-    <StatsView stats={landingPageData.landingPageStatsBar} statsData={statsData} /> */}
+    <div className={classes.whiteSection} />
+    <StatsView stats={landingPageData.landingPageStatsBar} statsData={statsData} />
     <div className={classes.container}>
       <div className={classes.texture}>
         <Grid container spacing={16} direction="row" className={classes.landingContainer}>
