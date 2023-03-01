@@ -8,7 +8,7 @@ import globalData from '../../bento/siteWideConfig';
 import {
   table, programListingIcon, externalLinkIcon,
 } from '../../bento/studiesData';
-// import Stats from '../../components/Stats/AllStatsController';
+import Stats from '../../components/Stats/AllStatsController';
 import { Typography } from '../../components/Wrappers/Wrappers';
 import {
   singleCheckBox, setSideBarToLoading, setDashboardTableLoading,
@@ -49,7 +49,7 @@ const Studies = ({ classes, data }) => {
 
   return (
     <>
-      {/*<Stats />*/}
+      <Stats />
       <div className={classes.tableContainer}>
         <div className={classes.container}>
           <Grid
