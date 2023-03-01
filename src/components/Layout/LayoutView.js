@@ -32,6 +32,9 @@ import editUserController from '../../pages/admin/userDetails/editUserController
 import viewUserController from '../../pages/admin/userDetails/viewUserController';
 import InActivityDialog from '../InActivityDialog';
 
+import Studies from '../../pages/studies/studiesController';
+import StudyDetail from '../../pages/studyDetail/studyDetailController';
+
 import fakeAdminView from '../../pages/fakeAdmin';
 
 // Access control imports
@@ -74,10 +77,12 @@ const Layout = ({ classes, isSidebarOpened }) => (
             <PrivateRoute path="/programs" access={['admin', 'member']} component={Programs} />
             <PrivateRoute path="/model" access={['admin', 'member']} component={modelPage} />
             <PrivateRoute path="/fileCentricCart" access={['admin', 'member']} component={fileCentricCart} />
+            <PrivateRoute path="/studies" access={['admin', 'member']} component={Studies} />
             <PrivateRoute path="/program/:id" access={['admin', 'member']} component={ProgramDetail} />
             <PrivateRoute path="/case/:id" access={['admin', 'member']} component={CaseDetail} />
             <PrivateRoute path="/arm/:id" access={['admin', 'member']} component={ArmDetail} />
             <PrivateRoute path="/fileViewer/:id" requiuredSignIn access={['admin', 'member']} component={JBrowseDetail} />
+            <PrivateRoute path="/study/:id" access={['admin', 'member']} component={StudyDetail} />
             {/* END SECTION */}
 
             {/* SECTION: Admin only Path */}
