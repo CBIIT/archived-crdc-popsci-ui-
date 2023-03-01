@@ -73,7 +73,7 @@ export const facetSectionVariables = {
 
 export const facetSectionFindApi = {
   Cases: {
-    api: 'subjectIds',
+    api: 'case_ids',
   },
   Samples: {
     api: 'sampleIds',
@@ -165,7 +165,7 @@ export const widgetsData = [
   {
     type: 'donut',
     label: 'Age-Range at Enrollment',
-    dataName: 'caseCountByEnrollmentYear', // subjectCountByDiagnoses
+    dataName: 'caseCountByEnrollmentAge', // subjectCountByDiagnoses
     // datatable_field: 'diagnosis',
     titleText: 'Cases',
     show: true,
