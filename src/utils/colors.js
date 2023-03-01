@@ -3,8 +3,10 @@ const COLORS_EVEN = [
   '#6ECDD3',
   '#F2E297',
   '#55676F',
-  '#E3AB19',
   '#C01E2E',
+  '#B39C7C',
+  '#7EAEB4',
+  '#E3AB19',
 ];
 
 // const COLORS_EVEN = [
