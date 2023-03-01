@@ -27,8 +27,8 @@ export const tabContainers = [
     api: 'GET_CASES_OVERVIEW_QUERY',
     paginationAPIField: 'caseOverview',
     count: 'numberOfCases',
-    dataKey: 'case_ids',
-    defaultSortField: 'case_ids',
+    dataKey: 'case_id',
+    defaultSortField: 'case_id',
     defaultSortDirection: 'asc',
     buttonText: 'Add Selected Files',
     saveButtonDefaultStyle: {
@@ -53,10 +53,10 @@ export const tabContainers = [
     columns: [
       // Case ID, Clinical Trial, Study, Center, Arm, Age of Enrollment, Sex
       {
-        dataField: 'case_ids',
+        dataField: 'case_id',
         header: 'Case ID',
         sort: 'asc',
-        link: '/case/{case_ids}',
+        link: '/case/{case_id}',
         primary: true,
         display: true,
       },
@@ -919,7 +919,7 @@ query CaseOverviewQuery(
     first: $first,
     offset: $offset
   ){
-      case_ids
+      case_id
       clinical_trial
       study
       center
