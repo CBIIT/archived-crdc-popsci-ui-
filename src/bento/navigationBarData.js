@@ -56,9 +56,9 @@ export const navBarData = [
     link: '/explore',
   },
   {
-    labelText: 'programs',
+    labelText: 'Study',
     type: 'link',
-    link: '/programs',
+    link: '/studies',
   },
   {
     labelText: 'about',
