@@ -105,7 +105,7 @@ const Dashboard = ({
                               customBackGround
                             >
                               <CustomActiveDonut
-                                data={data[widget.dataName]}
+                                data={data[widget.dataName].sort((a,b)=>a.subjects - b.subjects)}
                                 titleText={widget.titleText || 'Cases'}
                                 width={400}
                                 height={225}
