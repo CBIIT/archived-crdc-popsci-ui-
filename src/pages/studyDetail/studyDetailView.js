@@ -13,7 +13,7 @@ import {
 import globalData from '../../bento/siteWideConfig';
 import {
   pageTitle, table, externalLinkIcon,
-  studyDetailIcon, aggregateCount, rightPanel,
+  studyDetailIcon, aggregateCount, leftPanel, rightPanel,
 } from '../../bento/studyDetailData';
 import StatsView from '../../components/Stats/StatsView';
 import { Typography } from '../../components/Wrappers/Wrappers';
@@ -22,7 +22,8 @@ import {
 } from '../dashboardTab/store/dashboardReducer';
 
 const StudyView = ({ classes, data, theme }) => {
-  const programData = data.programDetail;
+  console.log("|| data: ", data)
+  const programData = data.studyDetail;
 
   const redirectTo = () => {
     setSideBarToLoading();
@@ -49,17 +50,16 @@ const StudyView = ({ classes, data, theme }) => {
   };
 
   const stat = {
-    numberOfPrograms: 1,
-    numberOfStudies: programData.num_subjects !== undefined ? programData.studies.length : 'undefined',
-    numberOfSubjects: programData.num_subjects !== undefined ? programData.num_subjects : 'undefined',
-    numberOfSamples: programData.num_samples !== undefined ? programData.num_samples : 'undefined',
-    numberOfLabProcedures: programData.num_lab_procedures !== undefined ? programData.num_lab_procedures : 'undefined',
-    numberOfFiles: programData.num_files !== undefined ? programData.num_files : 'undefined',
+    numberOfPrograms: programData.numberOfPrograms !== undefined ? programData.numberOfStudies : 'undefined',
+    numberOfStudies: programData.numberOfStudies !== undefined ? programData.numberOfStudies : 'undefined',
+    numberOfCases: programData.numberOfCases !== undefined ? programData.numberOfCases : 'undefined',
+    numberOfFiles: programData.numberOfFiles !== undefined ? programData.numberOfFiles : 'undefined',
   };
+  const leftUpdatedAttributesData = manipulateLinks(leftPanel.attributes);
+  const rightUpdatedAttributesData = manipulateLinks(rightPanel.attributes);
 
-  const updatedAttributesData = manipulateLinks(rightPanel.attributes);
-
-  const displayStudyDetail = (attribute, index) => {
+  const displayStudyDetail = (updatedAttributesData, attribute, index) => {
+    console.log("|| attribute: ", attribute)
     return (
       <div>
         {
@@ -163,7 +163,12 @@ const StudyView = ({ classes, data, theme }) => {
       {/* Study Detail: First Section */}
       <div className={classes.topContainer}>
         <div className={classes.topTitle}>
+        <Link
+          className={classes.studiesLink}
+          to={'/studies'}
+        >
           <span className={classes.parentPage}> Studies </span>
+        </Link>  
           <span className={classes.greaterSign}> {' > '} </span>
           <span className={classes.topStudyId}> {programData[pageTitle.dataField]} </span>
         </div>
@@ -217,9 +222,9 @@ const StudyView = ({ classes, data, theme }) => {
             {/* First Section - Study Detail: LEFT */}
             <Grid item lg={6} sm={6} xs={12} container>
               <Grid container direction="row" className={classes.detailContainerLeft}>
-                {updatedAttributesData.slice(0, 6).map((attribute, index) => (
+                {leftUpdatedAttributesData.slice(0, 6).map((attribute, index) => (
                   <Grid item xs={12} className={classes.insideDetailContainerLeft}>
-                    { displayStudyDetail(attribute, index) }
+                    { displayStudyDetail(leftUpdatedAttributesData, attribute, index) }
                   </Grid>
                 ))}
               </Grid>
@@ -227,9 +232,9 @@ const StudyView = ({ classes, data, theme }) => {
             {/* First Section - Study Detail: RIGHT */}
             <Grid item lg={6} sm={6} xs={12}>
               <Grid container direction="row" className={classes.detailContainerRight}>
-              {updatedAttributesData.slice(0, 6).map((attribute, index) => (
+              {rightUpdatedAttributesData.slice(0, 6).map((attribute, index) => (
                 <Grid item xs={12} className={classes.insideDetailContainerRight}>
-                  { displayStudyDetail(attribute, index) }
+                  { displayStudyDetail(rightUpdatedAttributesData, attribute, index) }
                 </Grid>
               ))}
               </Grid>
@@ -252,7 +257,7 @@ const StudyView = ({ classes, data, theme }) => {
                 <Grid item xs={12}>
                   <Typography>
                     <CustomDataTable
-                      data={[{}]} // data.programDetail[table.dataField]
+                      data={[]} // data.programDetail[table.dataField]
                       columns={getColumns(table, classes, data, externalLinkIcon, '/explore', redirectToArm, '', globalData.replaceEmptyValueWith)}
                       options={getOptions(table, classes)}
                     />
@@ -665,6 +670,9 @@ const styles = (theme) => ({
     verticalAlign: 'sub',
     marginLeft: '4px',
   },
+  studiesLink: {
+    textDecoration: 'none',
+  }
 });
 
 export default withStyles(styles, { withTheme: true })(StudyView);

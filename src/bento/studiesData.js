@@ -32,7 +32,7 @@ const table = {
     {
       dataField: 'study_code',
       header: 'Study Code',
-      link: '/study/{study_id}',
+      link: '/study/{study_code}',
       display: true,
     },
     {

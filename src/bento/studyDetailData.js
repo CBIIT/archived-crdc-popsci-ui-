@@ -3,11 +3,11 @@ import gql from 'graphql-tag';
 // --------------- Page title configuration --------------
 const pageTitle = {
   label: 'Study Code',
-  dataField: 'program_acronym',
+  dataField: 'study_code',
 };
 
 const pageSubTitle = {
-  dataField: 'program_id',
+  dataField: 'study_code',
 };
 
 const breadCrumb = {
@@ -18,7 +18,7 @@ const breadCrumb = {
 // --------------- Aggregated count configuration --------------
 const aggregateCount = {
   labelText: 'Subjects in this Study',
-  dataField: 'num_subjects',
+  dataField: 'numberOfStudies',
   link: '/explore',
   display: true,
 };
@@ -41,15 +41,15 @@ const externalLinkIcon = {
 const leftPanel = {
   attributes: [
     {
-      dataField: 'program_acronym',
+      dataField: 'study_id',
       label: 'Study ID',
     },
     {
-      dataField: 'program_name',
+      dataField: 'study_name',
       label: 'Study Name',
     },
     {
-      dataField: 'program_full_description',
+      dataField: 'description',
       label: 'Description',
     },
   ],
@@ -60,36 +60,20 @@ const leftPanel = {
 const rightPanel = {
   attributes: [
     {
-      dataField: 'program_acronym',
+      dataField: 'study_type',
       label: 'Study Type',
     },
     {
-      dataField: 'program_name',
+      dataField: 'actual_start_date',
       label: 'Actual Study Start Date',
     },
     {
-      dataField: 'program_name',
+      dataField: 'actual_completion_date',
       label: 'Actual Primary Completion Date',
     },
     {
-      dataField: 'program_full_description',
+      dataField: 'organization',
       label: 'Organization',
-    },
-  ],
-  widget: [
-    {
-      dataField: 'diagnoses',
-      label: 'Diagnosis',
-      display: true,
-    },
-  ],
-  files: [
-    {
-      dataField: 'num_files',
-      label: 'Number of files',
-      fileIconSrc: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/bento/images/icons/svgs/programNumberofFilesIcon.svg',
-      fileIconAlt: 'Number of files icon',
-      display: true,
     },
   ],
 };
@@ -101,9 +85,9 @@ const table = {
   // Table title
   title: 'Associated Files',
   // Field name for table data, need to be updated only when using a different GraphQL query
-  dataField: 'studies',
+  dataField: 'studyDetail',
   // Value must be one of the 'field' in columns
-  defaultSortField: 'study_acronym',
+  defaultSortField: 'study_code',
   // 'asc' or 'desc'
   defaultSortDirection: 'asc',
   // Set 'selectableRows' to true to show the row selection
@@ -114,16 +98,16 @@ const table = {
   // A maximum of 10 columns are allowed
   columns: [
     {
-      dataField: 'study_acronym',
+      dataField: 'study_code',
       header: 'File Name',
-      link: '/arm/{study_acronym}',
+      // link: '/arm/{study_acronym}',
     },
     {
       dataField: 'study_name',
       header: 'File Type',
     },
     {
-      dataField: 'study_full_description',
+      dataField: 'description',
       header: 'Description',
     },
     {
@@ -131,40 +115,30 @@ const table = {
       header: 'Format',
     },
     {
-      dataField: 'num_subjects',
+      dataField: 'numberOfFiles',
       header: 'Size',
     },
   ],
 };
 
-// --------------- GraphQL query - Retrieve program details --------------
-const GET_PROGRAM_DETAIL_DATA_QUERY = gql`
-query programDetail($program_id: String!) {
-  programDetail(program_id: $program_id) {
-    program_acronym
-    program_id
-    program_name
-    program_full_description
-    institution_name
-    program_external_url
-    num_subjects
-    num_files
-    num_samples
-    num_lab_procedures
-    disease_subtypes
-    diagnoses {
-      group
-      subjects
-    }
-    studies { 
+// --------------- GraphQL query - Retrieve study details --------------
+const GET_STUDY_DETAIL_DATA_QUERY = gql`
+  query studyDetail($study_code: String){
+    studyDetail(study_code: $study_code){
+      study_code
+      study_id
       study_name
       study_type
-      study_acronym
-      study_info
-      study_full_description
-      num_subjects
+      description
+      actual_start_date
+      actual_completion_date
+      organization
+      cases
+      numberOfPrograms
+      numberOfStudies
+      numberOfCases
+      numberOfFiles
     }
-  }
 }`;
 
 export {
@@ -176,6 +150,6 @@ export {
   rightPanel,
   externalLinkIcon,
   breadCrumb,
-  GET_PROGRAM_DETAIL_DATA_QUERY,
+  GET_STUDY_DETAIL_DATA_QUERY,
   table,
 };
