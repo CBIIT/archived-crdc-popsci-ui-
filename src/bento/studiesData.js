@@ -20,9 +20,9 @@ const table = {
   // Table title
   title: 'Studies',
   // Field name for table data, need to be updated only when using a different GraphQL query
-  dataField: 'programInfo',
+  dataField: 'studyInfo',
   // Value must be one of the 'field' in columns
-  defaultSortField: 'program_acronym',
+  defaultSortField: 'study_code',
   // 'asc' or 'desc'
   defaultSortDirection: 'asc',
   // Set 'selectableRows' to true to show the row selection
@@ -30,46 +30,44 @@ const table = {
   // A maximum of 10 columns are allowed
   columns: [
     {
-      dataField: 'program_acronym',
+      dataField: 'study_code',
       header: 'Study Code',
-      link: '/study/{program_id}',
+      link: '/study/{study_id}',
       display: true,
     },
     {
-      dataField: 'pubmed_id',
+      dataField: 'program',
       header: 'Program',
     },
     {
-      dataField: 'program_name',
+      dataField: 'study_name',
       header: 'Study Name',
     },
     {
-      dataField: 'start_date',
+      dataField: 'study_type',
       header: 'Start Type',
     },
     {
-      dataField: 'program_id',
+      dataField: 'study_id',
       header: 'Study ID',
     },
     {
-      dataField: 'num_subjects',
+      dataField: 'cases',
       header: 'Cases',
     },
   ],
 };
 
-// --------------- GraphQL query - Retrieve program info --------------
-const GET_PROGRAMS_DATA_QUERY = gql`{
-  programInfo {
- program_acronym
- program_id
- program_name
- start_date
- end_date
- pubmed_id
- num_studies
- num_subjects
- }
+// --------------- GraphQL query - Retrieve study info --------------
+const GET_STUDIES_DATA_QUERY = gql`{
+  studyInfo {
+    cases
+    program
+    study_code
+    study_id
+    study_name
+    study_type
+  }
 }
  `;
 
@@ -77,5 +75,5 @@ export {
   programListingIcon,
   externalLinkIcon,
   table,
-  GET_PROGRAMS_DATA_QUERY,
+  GET_STUDIES_DATA_QUERY,
 };
