@@ -268,6 +268,7 @@ export const resetIconFilter = { // TODO:- Replace Icon
   size: '12 px',
 };
 
+// NOTE: dashboardTable configration is depricated and no longer used. Remove if not used. 
 // --------------- Dashboard Table configuration --------------
 export const dashboardTable = {
   tableTitle: 'Cases',

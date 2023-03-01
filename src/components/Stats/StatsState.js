@@ -45,7 +45,8 @@ function fetchStats(statQuery, state) {
   return (dispatch) => client
     .query({
       query: statQuery,
-      context: { clientName: state && state.login.isSignedIn ? '' : 'publicService' },
+      // context: { clientName: state && state.login.isSignedIn ? '' : 'publicService' }, 
+      context: { clientName: 'publicService' },
     })
     .then((result) => dispatch(receiveStats(result)))
     .catch((error) => dispatch(errorhandler(error, STATS_QUERY_ERR)));

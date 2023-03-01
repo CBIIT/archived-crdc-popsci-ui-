@@ -56,7 +56,7 @@ export const tabContainers = [
         dataField: 'case_id',
         header: 'Case ID',
         sort: 'asc',
-        link: '/case/{case_id}',
+        // link: '/case/{case_ids}',
         primary: true,
         display: true,
       },
@@ -64,7 +64,7 @@ export const tabContainers = [
         dataField: 'clinical_trial',
         header: 'Clinical Trial',
         sort: 'asc',
-        link: '/program/{program_id}',
+        // link: '/program/{program_id}',
         display: true,
       },
       {
@@ -83,7 +83,7 @@ export const tabContainers = [
         dataField: 'arm',
         header: 'Arm',
         sort: 'asc',
-        link: '/arm/{study_acronym}',
+        // link: '/arm/{study_acronym}',
         display: true,
       },
       {
@@ -886,7 +886,7 @@ query sampleOverview(
 
 export const GET_CASES_OVERVIEW_QUERY = gql`
 query CaseOverviewQuery(
-  $case_ids: [String],
+  $case_id: [String],
   $studies: [String],
   $study_types: [String],
   $enrollment_years: [Float],
@@ -903,7 +903,7 @@ query CaseOverviewQuery(
   $offset: Int
 ){
   caseOverview(
-    case_ids: $case_ids,
+    case_id: $case_id,
     studies: $studies,
     study_types: $study_types,
     enrollment_years: $enrollment_years,
