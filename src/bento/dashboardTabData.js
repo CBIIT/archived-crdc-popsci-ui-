@@ -420,7 +420,7 @@ export const tabIndex = [
     selectedColor: '#C92EC7',
   },
 ];
-
+// SearchCasesQuery
 export const DASHBOARD_QUERY_NEW = gql`
 query SearchCasesQuery(
   $case_ids: [String],
@@ -432,7 +432,7 @@ query SearchCasesQuery(
   $races: [String],
   $ethnicities: [String],
   $dx_cancer_types: [String],
-  $dx_ages: [Float],
+  $dx_ages: [String],
   $biospecimens_available: [String]
 ){
     searchCases(
@@ -514,8 +514,7 @@ query SearchCasesQuery(
             subjects
         }
         filterCaseCountByDiagnosedAge {
-            lowerBound
-            upperBound
+            group
             subjects
         }
         filterCaseCountByBiospecimensAvailable {
@@ -525,7 +524,7 @@ query SearchCasesQuery(
     }
 }
 `;
-
+// SearchCasesQuery
 export const DASHBOARD_QUERY = gql`
 query SearchCasesQuery(
   $case_ids: [String],
@@ -537,7 +536,7 @@ query SearchCasesQuery(
   $races: [String],
   $ethnicities: [String],
   $dx_cancer_types: [String],
-  $dx_ages: [Float],
+  $dx_ages: [String],
   $biospecimens_available: [String]
 ){
     searchCases(
@@ -619,8 +618,7 @@ query SearchCasesQuery(
             subjects
         }
         filterCaseCountByDiagnosedAge {
-            lowerBound
-            upperBound
+            group
             subjects
         }
         filterCaseCountByBiospecimensAvailable {
@@ -665,7 +663,7 @@ subjectCountByEndocrineTherapy (subject_ids: $subject_ids){
    
 }
  `;
-
+// searchCases
 export const FILTER_QUERY = gql`
 query SearchCasesQuery(
   $case_ids: [String],
@@ -677,7 +675,7 @@ query SearchCasesQuery(
   $races: [String],
   $ethnicities: [String],
   $dx_cancer_types: [String],
-  $dx_ages: [Float],
+  $dx_ages: [String],
   $biospecimens_available: [String]
 ){
     searchCases(
@@ -759,8 +757,7 @@ query SearchCasesQuery(
             subjects
         }
         filterCaseCountByDiagnosedAge {
-            lowerBound
-            upperBound
+            group
             subjects
         }
         filterCaseCountByBiospecimensAvailable {
@@ -901,7 +898,7 @@ query sampleOverview(
     }
 }
 `;
-
+// PopSci: caseOverview
 export const GET_CASES_OVERVIEW_QUERY = gql`
 query CaseOverviewQuery(
   $case_id: [String],
@@ -913,7 +910,7 @@ query CaseOverviewQuery(
   $races: [String],
   $ethnicities: [String],
   $dx_cancer_types: [String],
-  $dx_ages: [Float],
+  $dx_ages: [String],
   $biospecimens_available: [String],
   $order_by: String,
   $sort_direction: String,

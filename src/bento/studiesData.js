@@ -45,7 +45,7 @@ const table = {
     },
     {
       dataField: 'study_type',
-      header: 'Start Type',
+      header: 'Study Type',
     },
     {
       dataField: 'study_id',

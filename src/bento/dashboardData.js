@@ -34,7 +34,7 @@ export const facetSearchData = [
     label: 'Diagnosed Cancer Type', field: 'group', api: 'filterCaseCountByDiagnosedCancerType', apiForFiltering: 'filterCaseCountByDiagnosedCancerType', datafield: 'dx_cancer_types', section: 'Cases', show: true,
   },
   {
-    label: 'Age At Diagnosis', field: 'group', api: 'filterCaseCountByDiagnosedAge', apiForFiltering: 'filterCaseCountByDiagnosedAge', datafield: 'dx_ages', section: 'Cases', show: true, slider: true, quantifier: 'Years',
+    label: 'Age At Diagnosis', field: 'group', api: 'filterCaseCountByDiagnosedAge', apiForFiltering: 'filterCaseCountByDiagnosedAge', datafield: 'dx_ages', section: 'Cases', show: true,
   },
   {
     label: 'Biospecimens Available', field: 'group', api: 'filterCaseCountByBiospecimensAvailable', apiForFiltering: 'filterCaseCountByBiospecimensAvailable', datafield: 'biospecimens_available', section: 'Cases', show: true,
