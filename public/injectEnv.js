@@ -6,7 +6,7 @@ window.injectedEnv = {
   REACT_APP_USER_LOGOUT_URL: 'https://k9dc.essential-dev.com/fence/logout',
 
   REACT_APP_APPLICATION_VERSION: 'YYYY_MM_DD/HH:MM',
-  REACT_APP_ABOUT_CONTENT_URL: 'https://raw.githubusercontent.com/CBIIT/bento-frontend/master/src/content/dev/aboutPagesContent.yaml',
+  REACT_APP_ABOUT_CONTENT_URL: 'https://raw.githubusercontent.com/CBIIT/bento-popsci-frontend/main/src/content/dev/aboutPagesContent.yaml',
 
   // Services API End Points:
   REACT_APP_BACKEND_API: 'http://localhost:3000/v1/graphql/',
