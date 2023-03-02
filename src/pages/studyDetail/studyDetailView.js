@@ -22,7 +22,7 @@ import {
 } from '../dashboardTab/store/dashboardReducer';
 
 const StudyView = ({ classes, data, theme }) => {
-  const programData = data.studyDetail;
+  const studyDetailData = data.studyDetail[0];
 
   const redirectTo = () => {
     setSideBarToLoading();
@@ -31,7 +31,7 @@ const StudyView = ({ classes, data, theme }) => {
       datafield: 'programs',
       groupName: 'Program',
       isChecked: true,
-      name: programData.program_acronym,
+      name: studyDetailData.program_acronym,
       section: 'Filter By Cases',
     }]);
   };
@@ -49,10 +49,10 @@ const StudyView = ({ classes, data, theme }) => {
   };
 
   const stat = {
-    numberOfPrograms: programData.numberOfPrograms !== undefined ? programData.numberOfStudies : 'undefined',
-    numberOfStudies: programData.numberOfStudies !== undefined ? programData.numberOfStudies : 'undefined',
-    numberOfCases: programData.numberOfCases !== undefined ? programData.numberOfCases : 'undefined',
-    numberOfFiles: programData.numberOfFiles !== undefined ? programData.numberOfFiles : 'undefined',
+    numberOfPrograms: studyDetailData.numberOfPrograms !== undefined ? studyDetailData.numberOfStudies : 'undefined',
+    numberOfStudies: studyDetailData.numberOfStudies !== undefined ? studyDetailData.numberOfStudies : 'undefined',
+    numberOfCases: studyDetailData.numberOfCases !== undefined ? studyDetailData.numberOfCases : 'undefined',
+    numberOfFiles: studyDetailData.numberOfFiles !== undefined ? studyDetailData.numberOfFiles : 'undefined',
   };
   const leftUpdatedAttributesData = manipulateLinks(leftPanel.attributes);
   const rightUpdatedAttributesData = manipulateLinks(rightPanel.attributes);
@@ -70,9 +70,9 @@ const StudyView = ({ classes, data, theme }) => {
                   {' '}
                   <Link
                     className={classes.link}
-                    to={`${attribute.actualLink}${programData[updatedAttributesData[attribute.actualLinkId].dataField]}`}
+                    to={`${attribute.actualLink}${studyDetailData[updatedAttributesData[attribute.actualLinkId].dataField]}`}
                   >
-                    {programData[attribute.dataField]}
+                    {studyDetailData[attribute.dataField]}
                   </Link>
                   {' '}
                 </span>
@@ -91,12 +91,12 @@ const StudyView = ({ classes, data, theme }) => {
                   <span className={classes.content}>
                     {' '}
                     <a
-                      href={`${attribute.actualLink}${programData[updatedAttributesData[attribute.actualLinkId].dataField]}`}
+                      href={`${attribute.actualLink}${studyDetailData[updatedAttributesData[attribute.actualLinkId].dataField]}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={classes.link}
                     >
-                      {programData[attribute.dataField]}
+                      {studyDetailData[attribute.dataField]}
                     </a>
                     <img
                       src={externalLinkIcon.src}
@@ -114,7 +114,7 @@ const StudyView = ({ classes, data, theme }) => {
                   <span
                     className={classes.detailContainerHeaderLink}
                   >
-                    <a href={`${programData[attribute.dataField]}`} rel="noopener noreferrer">{attribute.label}</a>
+                    <a href={`${studyDetailData[attribute.dataField]}`} rel="noopener noreferrer">{attribute.label}</a>
                   </span>
                 </div>
               )
@@ -124,7 +124,7 @@ const StudyView = ({ classes, data, theme }) => {
                     <span
                       className={classes.detailContainerHeaderLink}
                     >
-                      <a href={`${programData[attribute.dataField]}`} target="_blank" rel="noopener noreferrer">{attribute.label}</a>
+                      <a href={`${studyDetailData[attribute.dataField]}`} target="_blank" rel="noopener noreferrer">{attribute.label}</a>
                       <img
                         src={externalLinkIcon.src}
                         alt={externalLinkIcon.alt}
@@ -144,7 +144,7 @@ const StudyView = ({ classes, data, theme }) => {
                     <div className={classes.contentContainer}>
                       <span className={classes.content} id={`program_detail_left_section_description_${index + 1}`}>
                         {' '}
-                        {programData[attribute.dataField]}
+                        {studyDetailData[attribute.dataField]}
                         {' '}
                       </span>
                     </div>
@@ -168,7 +168,7 @@ const StudyView = ({ classes, data, theme }) => {
           <span className={classes.parentPage}> Studies </span>
         </Link>  
           <span className={classes.greaterSign}> {' > '} </span>
-          <span className={classes.topStudyId}> {programData[pageTitle.dataField]} </span>
+          <span className={classes.topStudyId}> {studyDetailData[pageTitle.dataField]} </span>
         </div>
         <div className={classes.container}>
 
@@ -189,7 +189,7 @@ const StudyView = ({ classes, data, theme }) => {
               </div>
               <div className={classes.headerTitle}>
                 <div className={classes.headerMainTitle}>
-                  {pageTitle.label}{': '}{' '} <span className={classes.studyId}>{' '}{programData[pageTitle.dataField]} </span>
+                  {pageTitle.label}{': '}{' '} <span className={classes.studyId}>{' '}{studyDetailData[pageTitle.dataField]} </span>
                 </div>
 
                 {aggregateCount.display ? (
@@ -205,7 +205,7 @@ const StudyView = ({ classes, data, theme }) => {
                         <span className={classes.headerButtonColumn}>{': '}</span>
                         <span className={classes.headerButtonLinkNumber} id="program_detail_header_file_count">
       
-                          {programData[aggregateCount.dataField]}
+                          {studyDetailData[aggregateCount.dataField]}
       
                         </span>
                       </Link>
