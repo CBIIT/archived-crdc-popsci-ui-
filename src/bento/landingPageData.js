@@ -62,7 +62,7 @@ export const landingPageData = {
     titleText: 'Request Access',
     descriptionText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
     callToActionText: 'Read More',
-    callToActionLink: '/resources', // Link to the "Resources" Static Page
+    callToActionLink: '/request', // Link to the Request Access Page
   },
   tile4: {
     alt: '',
