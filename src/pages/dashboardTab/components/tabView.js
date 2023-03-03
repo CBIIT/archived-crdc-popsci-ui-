@@ -221,6 +221,23 @@ const TabView = ({
     serverTableRowCount: selectedRowInfo.length,
   };
 
+  const draftCloumns = getColumns(customColumn, classes, data, externalLinkIcon, '', () => {}, DocumentDownload, globalData.replaceEmptyValueWith)
+
+  const customizedCloumns = draftCloumns.map(column => {
+    if (column.name === 'case_id') {
+      column['options'] = {
+        display: true,
+        customBodyRender: (value) => {
+          return (
+            <p className={classes.caseId}> {value} </p>
+          )
+        }
+      }
+    }
+    return column;
+  })
+  const columns = customizedCloumns
+
   return (
     <div>
       {/* <Grid item xs={12} className={classes.saveButtonDiv}>
@@ -264,7 +281,7 @@ const TabView = ({
           <CustomDataTable
             key={data.length}
             data={data}
-            columns={getColumns(customColumn, classes, data, externalLinkIcon, '', () => {}, DocumentDownload, globalData.replaceEmptyValueWith)}
+            columns={columns}
             options={finalOptions}
             count={count}
             overview={getOverviewQuery(api)}
@@ -325,7 +342,9 @@ const TabView = ({
 };
 
 const styles = (theme) => ({
-
+  caseId: {
+    minWidth: '135px !important',
+  },
   link: {
     color: theme.palette.text.link,
     textDecoration: 'none',
