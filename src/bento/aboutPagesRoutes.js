@@ -1,4 +1,4 @@
 export default [
-  '/bento',
+  '/population-sciences',
   '/resources',
 ];

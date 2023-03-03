@@ -68,8 +68,8 @@ export const navBarData = [
     type: 'dropdown',
     dropDownLinks: [
       {
-        labelText: 'Bento',
-        link: '/bento',
+        labelText: 'Population Sciences',
+        link: '/population-sciences',
       },
       {
         labelText: 'Resources',
