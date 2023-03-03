@@ -28,11 +28,9 @@ const StudyView = ({ classes, data, theme }) => {
     setSideBarToLoading();
     setDashboardTableLoading();
     singleCheckBox([{
-      datafield: 'programs',
-      groupName: 'Program',
+      datafield: 'studies',
       isChecked: true,
-      name: studyDetailData.program_acronym,
-      section: 'Filter By Cases',
+      name: studyDetailData.study_code,
     }]);
   };
 
