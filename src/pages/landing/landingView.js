@@ -507,6 +507,9 @@ const styles = () => ({
     color: '#EDE5D0',
     width: '266px',
     borderRadius: '30px',
+    '&:hover': {
+      backgroundColor: 'grey'
+    },
   },
   searchCaseArrow: {
     marginLeft: '45px'
