@@ -5,11 +5,10 @@ import Stats from '../../components/Stats/AllStatsController';
 
 const AboutView = ({ classes, data }) => {
   const getImage = (imgPath, alt) => <img className={classes.img} src={imgPath != null ? imgPath : ''} alt={alt} />;
-
   return (
     <>
       <Stats />
-      <AboutHeader title={data.title} />
+      <AboutHeader title={data.title ? data.title : ''} />
       <AboutBody data={{
         image: getImage(data.primaryContentImage, data.title),
         imageLocation: 'right',
