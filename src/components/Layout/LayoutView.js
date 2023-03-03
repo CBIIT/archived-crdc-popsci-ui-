@@ -17,7 +17,8 @@ import DataDictonary from '../../pages/dataDictionary/dataDictonaryController';
 import Programs from '../../pages/programs/programsController';
 import ProgramDetail from '../../pages/programDetail/programDetailController';
 import GraphqlClient from '../GraphqlClient/GraphqlView';
-import fileCentricCart from '../../pages/fileCentricCart/cartController';
+// import fileCentricCart from '../../pages/fileCentricCart/cartController';
+import DisabledCart from '../../pages/disabledCart';
 // import JBrowse from '../JBrowse/JBrowseView';
 import JBrowseDetail from '../../pages/jbrowseDetail/jbrowseDetailController';
 import GlobalSearch from '../../pages/search/searchView';
@@ -76,7 +77,8 @@ const Layout = ({ classes, isSidebarOpened }) => (
             <PrivateRoute path="/explore" access={['admin', 'member']} component={Dashboard} />
             <PrivateRoute path="/programs" access={['admin', 'member']} component={Programs} />
             <PrivateRoute path="/model" access={['admin', 'member']} component={modelPage} />
-            <PrivateRoute path="/fileCentricCart" access={['admin', 'member']} component={fileCentricCart} />
+            {/* <PrivateRoute path="/fileCentricCart" access={['admin', 'member']} component={fileCentricCart} /> */}
+            <PrivateRoute path="/fileCentricCart" access={['admin', 'member']} component={DisabledCart} />
             <PrivateRoute path="/studies" access={['admin', 'member']} component={Studies} />
             <PrivateRoute path="/program/:id" access={['admin', 'member']} component={ProgramDetail} />
             <PrivateRoute path="/case/:id" access={['admin', 'member']} component={CaseDetail} />
