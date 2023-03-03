@@ -5,6 +5,7 @@ import Stats from '../../components/Stats/AllStatsController';
 
 const AboutView = ({ classes, data }) => {
   const getImage = (imgPath, alt) => <img className={classes.img} src={imgPath != null ? imgPath : ''} alt={alt} />;
+  console.log("|| AboutView Data: ", data)
   return (
     <>
       <Stats />
