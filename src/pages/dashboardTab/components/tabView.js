@@ -227,9 +227,10 @@ const TabView = ({
     if (column.name === 'case_id') {
       column['options'] = {
         display: true,
+        setCellProps: () => ({ style: { minWidth: "160px", maxWidth: "160px" }}),
         customBodyRender: (value) => {
           return (
-            <p className={classes.caseId}> {value} </p>
+            <p> {value} </p>
           )
         }
       }
@@ -342,9 +343,6 @@ const TabView = ({
 };
 
 const styles = (theme) => ({
-  caseId: {
-    minWidth: '135px !important',
-  },
   link: {
     color: theme.palette.text.link,
     textDecoration: 'none',

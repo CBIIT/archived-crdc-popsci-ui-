@@ -98,24 +98,24 @@ const table = {
   // A maximum of 10 columns are allowed
   columns: [
     {
-      dataField: 'study_code',
+      dataField: 'file_name',
       header: 'File Name',
       // link: '/arm/{study_acronym}',
     },
     {
-      dataField: 'study_name',
+      dataField: 'file_type',
       header: 'File Type',
     },
     {
-      dataField: 'description',
+      dataField: 'file_description',
       header: 'Description',
     },
     {
-      dataField: 'study_type',
+      dataField: 'file_format',
       header: 'Format',
     },
     {
-      dataField: 'numberOfFiles',
+      dataField: 'file_size',
       header: 'Size',
     },
   ],
@@ -134,6 +134,13 @@ const GET_STUDY_DETAIL_DATA_QUERY = gql`
       actual_completion_date
       organization
       cases
+      files {
+        file_name
+        file_type
+        file_description
+        file_format
+        file_size
+      }
       numberOfPrograms
       numberOfStudies
       numberOfCases

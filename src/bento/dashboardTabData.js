@@ -50,6 +50,8 @@ export const tabContainers = [
       opacity: '0.3',
       cursor: 'auto',
     },
+    viewColumns: true,
+    download: true,
     columns: [
       // Case ID, Clinical Trial, Study, Center, Arm, Age of Enrollment, Sex
       {
