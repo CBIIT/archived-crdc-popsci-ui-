@@ -23,6 +23,7 @@ import {
 
 const StudyView = ({ classes, data, theme }) => {
   const studyDetailData = data.studyDetail[0];
+  const filesData = studyDetailData.files;
 
   const redirectTo = () => {
     setSideBarToLoading();
@@ -253,7 +254,7 @@ const StudyView = ({ classes, data, theme }) => {
                 <Grid item xs={12}>
                   <Typography>
                     <CustomDataTable
-                      data={[]} // data.programDetail[table.dataField]
+                      data={filesData} // data.programDetail[table.dataField]
                       columns={getColumns(table, classes, data, externalLinkIcon, '/explore', redirectToArm, '', globalData.replaceEmptyValueWith)}
                       options={getOptions(table, classes)}
                     />
@@ -644,20 +645,19 @@ const styles = (theme) => ({
     marginTop: '15px',
   },
   tableCell1: {
-    paddingLeft: '25px',
-    width: '200px',
+    width: '370px',
   },
   tableCell2: {
-    width: '370px',
+    width: '200px',
   },
   tableCell3: {
     width: '370px',
   },
   tableCell4: {
-    width: '160px',
+    width: '100px',
   },
   tableCell5: {
-    width: '160px',
+    width: '100px',
   },
   externalLinkIcon: {
     width: '16px',
