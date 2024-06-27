@@ -5,13 +5,14 @@ import {
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import {
-  CustomDataTable,
-  cn,
-  manipulateLinks,
   getOptions,
   getColumns,
-  CustomActiveDonut,
-} from 'bento-components';
+  manipulateLinks
+} from '@bento-core/util';
+import {
+  CustomDataTable
+} from '@bento-core/data-table';
+import clsx from 'clsx';
 import globalData from '../../bento/siteWideConfig';
 import {
   pageTitle, table, externalLinkIcon,
@@ -20,39 +21,28 @@ import {
 } from '../../bento/programDetailData';
 import StatsView from '../../components/Stats/StatsView';
 import { Typography } from '../../components/Wrappers/Wrappers';
-import {
-  singleCheckBox, setSideBarToLoading, setDashboardTableLoading,
-} from '../dashboardTab/store/dashboardReducer';
 import CustomBreadcrumb from '../../components/Breadcrumb/BreadcrumbView';
-import Widget from '../../components/Widgets/WidgetView';
 import colors from '../../utils/colors';
+import { WidgetGenerator } from '@bento-core/widgets';
+import { onClearAllAndSelectFacetValue } from '../dashTemplate/sideBar/BentoFilterUtils';
 
 const ProgramView = ({ classes, data, theme }) => {
   const programData = data.programDetail;
 
-  const redirectTo = () => {
-    setSideBarToLoading();
-    setDashboardTableLoading();
-    singleCheckBox([{
-      datafield: 'programs',
-      groupName: 'Program',
-      isChecked: true,
-      name: programData.program_acronym,
-      section: 'Filter By Cases',
-    }]);
+  const widgetGeneratorConfig = {
+    theme,
+    DonutConfig: {
+      colors,
+      styles: {
+        cellPadding: 0,
+        textOverflowLength: 20,
+      },
+    },
   };
 
-  const redirectToArm = (programArm) => {
-    setSideBarToLoading();
-    setDashboardTableLoading();
-    singleCheckBox([{
-      datafield: 'studies',
-      groupName: 'Arm',
-      isChecked: true,
-      name: `${programArm.rowData[0]}: ${programArm.rowData[1]}`,
-      section: 'Filter By Cases',
-    }]);
-  };
+  const { Widget } = WidgetGenerator(widgetGeneratorConfig);
+
+  const redirectToArm = (programArm) => onClearAllAndSelectFacetValue('studies', `${programArm.rowData[0]}: ${programArm.rowData[1]}`);
 
   const stat = {
     numberOfPrograms: 1,
@@ -95,7 +85,7 @@ const ProgramView = ({ classes, data, theme }) => {
                 </span>
               </span>
             </div>
-            <div className={cn(classes.headerMSubTitle, classes.headerSubTitleCate)}>
+            <div className={clsx(classes.headerMSubTitle, classes.headerSubTitleCate)}>
               <span id="program_detail_subtile">
                 {' '}
                 {programData[pageSubTitle.dataField]}
@@ -111,7 +101,7 @@ const ProgramView = ({ classes, data, theme }) => {
                 <Link
                   className={classes.headerButtonLink}
                   to={(location) => ({ ...location, pathname: `${aggregateCount.link}` })}
-                  onClick={() => redirectTo()}
+                  onClick={()=>onClearAllAndSelectFacetValue('programs', programData.program_acronym)}
                 >
                   {' '}
                   <span className={classes.headerButtonLinkText}>{aggregateCount.labelText}</span>
@@ -247,28 +237,27 @@ const ProgramView = ({ classes, data, theme }) => {
                     className={classes.marginTopN37}
                   >
                     <Widget
-                      title={rightPanel.widget[0].label}
-                      upperTitle
+                      header={(
+                        <Typography
+                          colorBrightness="main"
+                          size="md"
+                          weight="normal"
+                          family="Nunito"
+                          color={theme.palette.dodgeBlue.main}
+                          className={classes.widgetTitle}
+                        >
+                          {rightPanel.widget[0].label}
+                        </Typography>
+                      )}
                       bodyClass={classes.fullHeightBody}
                       className={classes.card}
-                      color={theme.palette.dodgeBlue.main}
-                      titleClass={classes.widgetTitle}
+                      customBackGround
                       noPaddedTitle
-                    >
-                      <CustomActiveDonut
-                        data={programData[rightPanel.widget[0].dataField] || []}
-                        width={400}
-                        height={225}
-                        innerRadius={50}
-                        outerRadius={75}
-                        cx="50%"
-                        cy="50%"
-                        fontSize="12px"
-                        colors={colors}
-                        titleLocation="bottom"
-                        titleAlignment="center"
-                      />
-                    </Widget>
+                      data={programData[rightPanel.widget[0].dataField] || []}
+                      chartType="donut"
+                      chartTitleLocation="bottom"
+                      chartTitleAlignment="center"
+                    />
                   </Grid>
                 ) : ''}
 

@@ -1,12 +1,4 @@
 export default () => ({
-  customTooltip: {
-    border: '#03A383 1px solid',
-  },
-  customArrow: {
-    '&::before': {
-      border: '#03A383 1px solid',
-    },
-  },
   tableWrapper: {
     margin: 'auto 3% auto 3%',
     maxWidth: '100%',
@@ -22,7 +14,7 @@ export default () => ({
   myFilesWrapper: {
     border: '#03A383 4px solid',
     borderRadius: '35px',
-    marginTop: '200px',
+    marginTop: '50px',
     marginBottom: '80px',
     marginLeft: '3%',
     marginRight: '3%',
@@ -54,6 +46,10 @@ export default () => ({
   manifestButtonGroup: {
     marginTop: '10px',
     float: 'right',
+  },
+  disabledButton: {
+    cursor: 'auto !important',
+    opacity: '0.5',
   },
   downloadButton: {
     height: '45px',

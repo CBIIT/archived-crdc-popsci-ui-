@@ -1,5 +1,4 @@
 import React from 'react';
-// import { CircularProgress } from '@material-ui/core';
 import { useQuery } from '@apollo/client';
 import { getCart, updateSortOrder } from './store/cart';
 import { Typography } from '../../components/Wrappers/Wrappers';
@@ -9,6 +8,7 @@ import CartView from './cartView';
 const cartController = () => {
   const cart = getCart();
   const ids = cart.fileIds ? cart.fileIds : [];
+  const fileIds = ids.map((id) => id.uuid);
   const defaultSortDirection = cart.sortDirection === '' || !cart.sortDirection ? table.defaultSortDirection || 'asc' : cart.sortDirection;
   const CART_QUERY = GET_MY_CART_DATA_QUERY;
   const defaultSortColumnValue = cart.sortColumn === '' || !cart.sortColumn ? table.defaultSortField || '' : cart.sortColumn;
@@ -23,13 +23,13 @@ const cartController = () => {
   const page = parseInt(localPage, 10);
   const rowsPerPage = parseInt(localRowsPerPage, 10);
   const offset = page * rowsPerPage;
-  const count = ids.length || 0;
+  const count = fileIds.length || 0;
   const { loading, error, data } = useQuery(CART_QUERY, {
     variables: {
       offset,
       first: count < rowsPerPage ? count : rowsPerPage,
       order_by: cart.sortColumn === '' ? table.defaultSortField || '' : cart.sortColumn,
-      file_ids: ids,
+      uuid: fileIds,
     },
   });
   if (loading) {
@@ -52,7 +52,7 @@ const cartController = () => {
   return (
     <CartView
       isLoading={false}
-      fileIDs={ids}
+      fileIDs={fileIds}
       updateSortOrder={updateSortOrder}
       defaultSortCoulmn={defaultSortColumnValue}
       defaultSortDirection={defaultSortDirection}
@@ -62,7 +62,7 @@ const cartController = () => {
       localRowsPerPage={localRowsPerPage}
       data={
         data.filesInList === null || data.filesInList === '' ? [] : data.filesInList
-        }
+      }
     />
   );
 };

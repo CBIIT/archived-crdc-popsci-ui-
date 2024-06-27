@@ -30,8 +30,10 @@ const CartHeader = ({
     // eslint-disable-next-line no-sequences
     return (curr, allRowsSelected);
   }
+
   const columns = getColumns(table, classes).concat(deleteColumn);
   const options = getOptions(table, classes, getDefaultCustomFooter, onRowSelectionChange);
+
   return (
     <TableThemeProvider>
       <CustomDataTable
@@ -42,7 +44,7 @@ const CartHeader = ({
         count={fileIDs.length || 0}
         overview={GET_MY_CART_DATA_QUERY}
         paginationAPIField={paginationAPIField}
-        queryCustomVaribles={{ file_ids: fileIDs }}
+        queryCustomVaribles={{ uuid: fileIDs }}
         defaultSortCoulmn={defaultSortCoulmn}
         defaultSortDirection={defaultSortDirection}
         tableDownloadCSV={table.tableDownloadCSV}
